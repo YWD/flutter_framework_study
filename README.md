@@ -1,3 +1,3 @@
 # web_app
 
-Flutter framework build process.
+Flutter framework study.
