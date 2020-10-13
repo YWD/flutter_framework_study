@@ -1,7 +1,5 @@
-import 'package:web_app/class_content/element/element_class.dart';
-import 'package:web_app/widgets/class_content_widget.dart';
+import 'package:web_app/build_process/widgets/class_content_widget.dart';
 
-import 'render_obj_element_class.dart';
 import 'root_render_obj_element_class.dart';
 
 class RenderObj2WidgetElementClass extends RootRenderObjElementClass {

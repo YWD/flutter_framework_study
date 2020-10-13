@@ -1,7 +1,8 @@
 import 'package:flutter/widgets.dart';
-import 'package:web_app/class_content/binding/renderer_binding_class.dart';
-import 'package:web_app/class_content/binding/widgets_binding_class.dart';
-import 'package:web_app/widgets/class_content_widget.dart';
+import 'package:web_app/build_process/widgets/class_content_widget.dart';
+
+import 'renderer_binding_class.dart';
+import 'widgets_binding_class.dart';
 
 class WidgetsFlutterBindingClass extends StatelessWidget {
   final className = 'WidgetsFlutterBinding';

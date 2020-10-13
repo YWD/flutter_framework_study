@@ -1,5 +1,5 @@
 import 'package:flutter/widgets.dart';
-import 'package:web_app/widgets/class_content_widget.dart';
+import 'package:web_app/build_process/widgets/class_content_widget.dart';
 
 // todo extends ClassContentWidget?
 class AppClass extends StatelessWidget {

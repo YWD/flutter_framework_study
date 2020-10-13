@@ -1,5 +1,4 @@
-import 'package:web_app/class_content/element/component_element_class.dart';
-import 'package:web_app/widgets/class_content_widget.dart';
+import 'package:web_app/build_process/widgets/class_content_widget.dart';
 
 import 'widget_class.dart';
 

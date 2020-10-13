@@ -1,4 +1,4 @@
-import 'package:web_app/widgets/class_content_widget.dart';
+import 'package:web_app/build_process/widgets/class_content_widget.dart';
 
 class ElementClass extends ClassContentWidget {
   ElementClass(String className, List<String> methods, List<ClassContentWidget> extendsOrMixIns) : super(className, methods, extendsOrMixIns);
