@@ -1,14 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:web_app/app_dev/navigator_study.dart';
 import 'package:web_app/widgets_study/app_widget_tree.dart';
 
 import 'build_process/source_code_block.dart';
 
 void main() {
   // runApp(SourceCodeBlock());
-  runApp(AppContainer());
+  // runApp(AppContainer());
 
-  // runApp(MyApp());
+  runApp(app);
 
   // todo text yellow underline
   // todo text size
