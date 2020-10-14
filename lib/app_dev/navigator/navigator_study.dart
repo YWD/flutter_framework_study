@@ -13,24 +13,25 @@ import 'package:flutter/material.dart';
 // 'non-null value for any valid route not handled by "home" and "routes".\n'
 // ' 4. Finally if all else fails onUnknownRoute is called.\n'
 // 'Unfortunately, onUnknownRoute was not set.'
-var app = MaterialApp(
+var navigatorStudyApp = MaterialApp(
   // home: Builder(builder: (context) {
   //   return Center(child: FlatButton(child: Text('material app home'), onPressed: () {
   //     Navigator.of(context).pushNamed('non-/');
   //   },),);
   // },),
+  initialRoute: 'non-/',  //instead of default '/', will be interpreted by onGenerateInitialRoutes
   routes: {
     'non-/': (context) {
       return Text('route /');
     },
   },
-  onGenerateInitialRoutes: (String initialRouteName) {  /// default implement by Navigator.defaultGenerateInitialRoutes
-    return [
-      MaterialPageRoute(builder: (context) {
-        return Center(child: Text('onGenerateInitialRoutes'),);
-      }),
-    ];
-  },
+  // onGenerateInitialRoutes: (String initialRouteName) {  /// default implement by Navigator.defaultGenerateInitialRoutes
+  //   return [
+  //     MaterialPageRoute(builder: (context) {
+  //       return Center(child: Text('onGenerateInitialRoutes'),);
+  //     }),
+  //   ];
+  // },
   onGenerateRoute: (settings) {
     return CupertinoPageRoute(builder: (context) {
       return Text('CupertinoPageRoute');

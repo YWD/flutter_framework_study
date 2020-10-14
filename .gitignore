@@ -42,3 +42,6 @@ app.*.map.json
 
 android/
 ios/
+
+# idea
+**/.idea/workspace.xml **/.idea/tasks.xml
