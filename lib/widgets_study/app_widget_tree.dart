@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class AppContainer extends StatelessWidget {
+class AppWidgetTree extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,7 +22,7 @@ class Anonymous extends StatelessWidget {
             },
           ),
         ),
-        CascadeWidget(),
+        Expanded(child: CascadeWidget()),
       ],
     );
   }
@@ -89,15 +89,17 @@ class CascadeWidget extends StatelessWidget {
           decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
           child: Text('pages...\nscaffold/material\ncustom_page'));
     String text = widgets.removeAt(0);
-    return Container(
-      margin: EdgeInsets.only(top: 8),
-      padding: EdgeInsets.fromLTRB(6, 2, 6, 6),
-      decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
-      child: Column(
-        children: [
-          Text(text),
-          CascadeWidget(),
-        ],
+    return SingleChildScrollView(
+      child: Container(
+        margin: EdgeInsets.only(top: 8),
+        padding: EdgeInsets.fromLTRB(6, 2, 6, 6),
+        decoration: BoxDecoration(border: Border.all(color: Colors.grey)),
+        child: Column(
+          children: [
+            Text(text),
+            CascadeWidget(),
+          ],
+        ),
       ),
     );
   }
