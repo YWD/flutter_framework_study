@@ -22,6 +22,7 @@ var navigatorStudyApp = MaterialApp(
   initialRoute: 'non-/',  //instead of default '/', will be interpreted by onGenerateInitialRoutes
   routes: {
     'non-/': (context) {
+      // Navigator.of(context, rootNavigator: true); // rootNavigator: there may nested navigator find the 'root' one
       return Text('route /');
     },
   },
@@ -32,6 +33,7 @@ var navigatorStudyApp = MaterialApp(
   //     }),
   //   ];
   // },
+  /// pageRouteBuilder 默认处理路由
   onGenerateRoute: (settings) {
     return CupertinoPageRoute(builder: (context) {
       return Text('CupertinoPageRoute');
