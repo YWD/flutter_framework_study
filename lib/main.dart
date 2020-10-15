@@ -5,6 +5,7 @@ import 'package:web_app/app_dev/navigator/nested_navigator.dart';
 import 'package:web_app/app_dev/router/books_app.dart';
 import 'package:web_app/widgets_study/app_widget_tree.dart';
 
+import 'app_dev/state_manage/provider_study.dart';
 import 'build_process/source_code_block.dart';
 
 void main() {
@@ -12,8 +13,9 @@ void main() {
   // runApp(AppContainer());
   // runApp(navigatorStudyApp);
   // runApp(NestedNavigator());
-
-  runApp(BooksApp());
+  // runApp(BooksApp());
+  // runApp(NavigatorContainer());
+  runApp(ProviderRoute());
 
   // todo text yellow underline
   // todo text size
