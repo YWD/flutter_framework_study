@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:web_app/app_dev/navigator/navigator_study.dart';
 import 'package:web_app/app_dev/navigator/nested_navigator.dart';
+import 'package:web_app/app_dev/router/books_app.dart';
 import 'package:web_app/widgets_study/app_widget_tree.dart';
 
 import 'build_process/source_code_block.dart';
@@ -9,8 +10,10 @@ import 'build_process/source_code_block.dart';
 void main() {
   // runApp(SourceCodeBlock());
   // runApp(AppContainer());
-  runApp(navigatorStudyApp);
+  // runApp(navigatorStudyApp);
   // runApp(NestedNavigator());
+
+  runApp(BooksApp());
 
   // todo text yellow underline
   // todo text size
