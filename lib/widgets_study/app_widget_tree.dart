@@ -22,6 +22,9 @@ class Anonymous extends StatelessWidget {
             },
           ),
         ),
+        const Text('1234'),
+        const Text('1234'),
+        const Text('1234'),
         Expanded(child: CascadeWidget()),
       ],
     );
