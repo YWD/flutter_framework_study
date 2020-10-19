@@ -8,6 +8,7 @@ import 'package:web_app/widgets_study/rebuild_sub_widget.dart';
 
 import 'app_dev/state_manage/provider_study.dart';
 import 'build_process/source_code_block.dart';
+import 'widgets_study/did_update_widget.dart';
 
 void main() {
   // runApp(SourceCodeBlock());
@@ -17,7 +18,8 @@ void main() {
   // runApp(BooksApp());
   // runApp(NavigatorContainer());
   // runApp(ProviderRoute());
-  runApp(RebuildContainer());
+  // runApp(RebuildContainer());
+  runApp(TurnBoxRoute());
 
   // todo text yellow underline
   // todo text size

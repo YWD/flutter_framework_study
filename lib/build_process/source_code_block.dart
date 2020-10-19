@@ -58,6 +58,7 @@ class SourceCodeBlock extends StatelessWidget {
                 ],),
             ),
           ],),
+          // todo build process and lifecycle not clear
           Text('createElement -> mount -> build(child Widget) -> updateChild -> inflateWidget(child.createElement)', style: TextStyle(fontSize: 18, color: Colors.black),),
           Text('createElement -> mount -> build(child Widget) -> updateChild -> inflateWidget(child.createElement)', style: TextStyle(fontSize: 18, color: Colors.black),),
         ],
