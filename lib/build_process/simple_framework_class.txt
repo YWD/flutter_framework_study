@@ -1,0 +1,56 @@
+App {
+  main
+  runApp   WidgetsFlutterBinding {
+             ensureInitialized
+             attachRootWidget        RenderObjectToWidgetAdapter {
+                                       attachToRenderTree
+                                       createElement                  RenderObjectToWidgetElement {
+                                                                        assignOwner
+                                                                        mount
+                                                                        attachRenderObject
+                                                                        _rebuild
+                                                                        updateChild
+                                                                        inflateWidget
+                                                                          widget.child.createElement  StatelessElement {
+                                                                                                        mount
+                                                                                                        _updateInheritance
+                                                                                                        _firstBuild
+                                                                                                        rebuild
+                                                                                                        performRebuild
+                                                                                                        build => widget.build   StatefulWidget {
+
+                                                                                                        inflateWidget             createElement   StatefulElement: widget.createState {   XxxState {
+                                                                                                                                                    mount
+                                                                                                                                                    _updateInheritance
+                                                                                                                                                    _firstBuild                             initState
+                                                                                                                                                                                            didChangeDependencies
+                                                                                                                                                    rebuild
+                                                                                                                                                    performRebuild
+                                                                                                                                                    build => widget.build                                           XxxWidget {
+
+                                                                                                                                                    inflateWidget                                                     createElement
+                                                                                                                                                                                          }                         }
+                                                                                                                                                  }
+                                                                                                      }
+                                                                      }
+                                     }
+           }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
