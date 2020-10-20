@@ -21,6 +21,7 @@ class _WidgetLifecycleState extends State<WidgetLifecycle> {
 
   @override
   void didChangeDependencies() {  // after initState / InheritedWidget -> InheritedElement --> updated
+    Theme.of(context);
     super.didChangeDependencies();
   }
 
@@ -48,17 +49,57 @@ class _WidgetLifecycleState extends State<WidgetLifecycle> {
 
   @override
   Widget build(BuildContext context) {
-    return Directionality(textDirection: TextDirection.ltr,
-    child: Container(child: Center(child: Column(
-      children: [
-        firstNotThird ? Lifecycle(key: key,) : Container(),
-        FlatButton(child: Text('打他'), onPressed: () {setState(() {
-          firstNotThird = !firstNotThird;
-          print('firstNotThird:$firstNotThird');
-        });},),
-        firstNotThird ? Container() : Lifecycle(key: key,),
-      ],
-    ))));
+    return MaterialApp(
+      home: Directionality(textDirection: TextDirection.ltr,
+      child: Builder(
+        builder: (context) {
+          return Container(child: Center(child: Column(
+            children: [
+              firstNotThird ? Lifecycle(key: key,) : Container(),
+              FlatButton(child: Text('transfer'), onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(builder: (context) {
+                  return GestureDetector(onTap: () {
+                    Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) {
+                      return Container(color: Colors.red);
+                    }));
+                  },child: My());
+                }));
+                Future.delayed(Duration(seconds: 2), () {
+                  setState(() {
+                    firstNotThird = !firstNotThird;
+                    print('firstNotThird:$firstNotThird');
+                  });
+                });
+              }),
+              firstNotThird ? Container() : Lifecycle(key: key,),
+            ],
+          )));
+        }
+      )), color: Colors.orange,
+    );
+  }
+}
+
+class My extends StatefulWidget {
+  @override
+  _MyState createState() => _MyState();
+}
+
+class _MyState extends State<My> {
+
+  @override
+  void initState() {
+    super.initState();
+
+    Future.delayed(Duration(seconds: 2), () {
+      setState(() {
+
+      });
+    });
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Container(color: Colors.yellow,);
   }
 }
 

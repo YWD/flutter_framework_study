@@ -7,6 +7,7 @@ App {
                                        createElement                  RenderObjectToWidgetElement {
                                                                         assignOwner
                                                                         mount
+                                                                        widget.createRenderObject
                                                                         attachRenderObject
                                                                         _rebuild
                                                                         updateChild

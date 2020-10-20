@@ -1,0 +1,101 @@
+/// lifecycle
+
+// widget.createElement -> element.mount -> state.initState
+initState
+
+// 1.After state.initState
+// 2.Some widget may use .of(context) to use InheritedWidget's value, this can cause the InheritedWidget
+// corresponding InheritedElement save the widget corresponding element in it's _dependents, when
+// the InheritedWidget get rebuild (it's parent widget corresponding state's setState get called) it
+// will update it's _dependents
+didChangeDependencies
+
+// reuse widget
+// when element update it's child if the child 'canUpdate' it will invoke child's 'update' method to invoke
+// child element's state's didUpdateWidget
+didUpdateWidget
+
+// first init
+// setState -> element.markNeedsBuild -> buildOwner.onBuildSchedule -> widgetsBinding._handleBuildScheduled
+// -> schedulerBinding.scheduleFrame -> schedulerBinding._handleBeginFrame ----> @callbacks
+build
+
+// rebuild all element by invoke markNeedsBuild for all subtree node.
+// this method will only invoked during debugging, for example during hot reload
+reassemble
+
+// when rebuild the parent is going to update child, it find it's child doesn't exists anymore
+// the parent will 'deactivateChild' by invoke in owner!._inactiveElements.add method, this will
+// _deactivateRecursively
+deactivate
+
+// after drawFrame buildOwner will finalizeTree
+// _unmountAll _inactiveElements
+dispose // setState() called after dispose
+
+/// callbacks
+SchedulerPhase {
+    idle,
+
+    // SchedulerBinding.scheduleFrameCallback
+    transientCallbacks,     // for animate
+
+    midFrameMicrotasks,     // for future.then
+
+    // SchedulerBinding.addPersistentFrameCallback
+    persistentCallbacks,    // WidgetsBinding.drawFrame() for build/layout/paint
+
+    // SchedulerBinding.addPostFrameCallback
+    postFrameCallbacks,
+}
+
+/// window
+devicePixelRatio,
+locale,
+onPlatformMessage,
+onBeginFrame,
+onDrawFrame,
+render,
+
+/// bindings
+GestureBinding,     // gesture
+SchedulerBinding,   // schedule frame
+ServicesBinding,    // message channel
+PaintingBinding,    // image cache
+SemanticsBinding,   // accessibility
+RendererBinding,    // renderView           pipelineOwner
+WidgetsBinding      //                      buildOwner
+
+/// flutter launch process
+
+
+/// setState
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
