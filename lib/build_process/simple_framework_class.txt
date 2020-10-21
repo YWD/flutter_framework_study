@@ -4,10 +4,10 @@ App {
              ensureInitialized
              attachRootWidget        RenderObjectToWidgetAdapter {
                                        attachToRenderTree
-                                       createElement                  RenderObjectToWidgetElement {
+                                       createElement                  RenderObjectToWidgetElement { // renderViewElement
                                                                         assignOwner
                                                                         mount
-                                                                        widget.createRenderObject
+                                                                        widget.createRenderObject --- renderView(renderBinding.initInstance(initRenderView))
                                                                         attachRenderObject
                                                                         _rebuild
                                                                         updateChild
@@ -22,14 +22,24 @@ App {
 
                                                                                                         inflateWidget             createElement   StatefulElement: widget.createState {   XxxState {
                                                                                                                                                     mount
-                                                                                                                                                    _updateInheritance
+                                                                                                                                                    _updateInheritance  // extends _inheritedWidgets from parent
                                                                                                                                                     _firstBuild                             initState
                                                                                                                                                                                             didChangeDependencies
                                                                                                                                                     rebuild
                                                                                                                                                     performRebuild
-                                                                                                                                                    build => widget.build                                           XxxWidget {
+                                                                                                                                                    build => widget.build                                           Theme { // InheritedWidget _InheritedTheme
+                                                                                                                                                                                                                      .child
+                                                                                                                                                    inflateWidget                                                     createElement                              InheritedElement {
+                                                                                                                                                                                                                                                                   mount
+                                                                                                                                                                                                                                                                   _updateInheritance   // put this in map
+                                                                                                                                                                                                                                                                   _firstBuild
 
-                                                                                                                                                    inflateWidget                                                     createElement
+                                                                                                                                                                                                                                                                   rebuild
+                                                                                                                                                                                                                                                                   performRebuild
+                                                                                                                                                                                                                                                                   build => widget.child
+
+                                                                                                                                                                                                                                                                   inflateWidget -> child.createElement...
+                                                                                                                                                                                                                                                                 }
                                                                                                                                                                                           }                         }
                                                                                                                                                   }
                                                                                                       }
@@ -38,7 +48,27 @@ App {
            }
 }
 
+Row {
+  createElement     MultiChildRenderObjectElement {
+                      mount
+                      widget.createRenderObject             RenderFlex {
+                      // renderView.child(set -> adoptChild) = _renderObject
+                      attachRenderObject
+                      inflateWidget(children)                               ErrorWidget {
+                                                                              createElement     LeafRenderObjectElement {
+                                                                                                  mount
+                                                                                                  widget.createRenderObject     RenderErrorBox {
 
+
+                                                            renderObject.insert<------------------attachRenderObject
+                                                            ↓ adoptChild + _insertIntoChildList
+                                                                                                                                }
+                                                                                                }
+                                                                            }
+                    }                                       }
+}
+
+slot IndexedSlot<Element?>(i, previousChild)
 
 
 

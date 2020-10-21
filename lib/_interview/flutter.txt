@@ -43,7 +43,7 @@ SchedulerPhase {
     midFrameMicrotasks,     // for future.then
 
     // SchedulerBinding.addPersistentFrameCallback
-    persistentCallbacks,    // WidgetsBinding.drawFrame() for build/layout/paint
+    persistentCallbacks,    // WidgetsBinding.drawFrame() for build(buildOwner)/layout-paint(pipelineOwner)
 
     // SchedulerBinding.addPostFrameCallback
     postFrameCallbacks,
@@ -67,9 +67,24 @@ RendererBinding,    // renderView           pipelineOwner
 WidgetsBinding      //                      buildOwner
 
 /// flutter launch process
+widget tree imprecisely / element tree (parent) / RenderObject tree (child)
+runApp -> ensureInitialize -> RenderObjectToWidgetAdapter -> RenderObjectToWidgetElement(_renderViewElement) -> RenderView(renderView)
+
+StatefulWidget          element(parent).inflateWidget -> widget.createElement -> state - element.mount parent _updateInheritance -> _firstBuild - state.initState-didChangeDependencies -> rebuild -> performRebuild -> state.build -> updateChild -> inflateWidget
+StatelessWidget         element(parent).inflateWidget -> widget.createElement -> element.mount parent -> _firstBuild -widget.build -> updateChild -> inflateWidget
+InheritedWidget         element(parent).inflateWidget -> widget.createElement -> element.mount parent _updateInheritance -> _firstBuild -> rebuild -> performRebuild -> widget.child -> updateChild -> inflateWidget
+RenderObjectWidget      element(parent).inflateWidget -> widget.createElement -> element.mount parent widget.createRenderObject element.attachRenderObject(parent.child parent._firstChild/_lastChild(parentData) -> (updateChild) -> inflateWidget
 
 
 /// setState
+setState -> element.markNeedsBuild -> buildOwner.scheduleBuildFor * -> onBuildScheduled
+-> widgetsBinding._handleBuildScheduled -> schedulerBing.ensureVisualUpdate -> scheduleFrame
+-> window.scheduleFrame -> * add to _dirtyElements
+
+/// about VSync
+Display pulse
+jank / double buffering / triple buffering
+scheduleFrame -> window.scheduleFrame ----> VSync -> schedulerBinding._handleBeginFrame -> @ scheduleCallbacks
 
 
 
