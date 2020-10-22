@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:web_app/app_dev/navigator/navigator_study.dart';
 import 'package:web_app/app_dev/navigator/nested_navigator.dart';
