@@ -57,6 +57,7 @@ class _WidgetLifecycleState extends State<WidgetLifecycle> {
             children: [
               firstNotThird ? Lifecycle(key: key,) : Container(),
               FlatButton(child: Text('transfer'), onPressed: () {
+                debugDumpLayerTree();
                 Navigator.of(context).push(MaterialPageRoute(builder: (context) {
                   return GestureDetector(onTap: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context) {

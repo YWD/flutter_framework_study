@@ -63,12 +63,13 @@ SchedulerBinding,   // schedule frame
 ServicesBinding,    // message channel
 PaintingBinding,    // image cache
 SemanticsBinding,   // accessibility
-RendererBinding,    // renderView           pipelineOwner
-WidgetsBinding      //                      buildOwner
+RendererBinding,    // renderView           pipelineOwner.flushLayout/flushCompositingBits/flushPaint
+WidgetsBinding      //                      buildOwner.buildScope -> _dirtyElements.rebuild
 
 /// flutter launch process
 widget tree imprecisely / element tree (parent) / RenderObject tree (child)
-runApp -> ensureInitialize -> RenderObjectToWidgetAdapter -> RenderObjectToWidgetElement(_renderViewElement) -> RenderView(renderView)
+runApp -> ..ensureInitialize -> RenderObjectToWidgetAdapter -> RenderObjectToWidgetElement(_renderViewElement) -> RenderView(renderView)
+..scheduleWarmUpFrame
 
 StatefulWidget          element(parent).inflateWidget -> widget.createElement -> state - element.mount parent _updateInheritance -> _firstBuild - state.initState-didChangeDependencies -> rebuild -> performRebuild -> state.build -> updateChild -> inflateWidget
 StatelessWidget         element(parent).inflateWidget -> widget.createElement -> element.mount parent -> _firstBuild -widget.build -> updateChild -> inflateWidget
@@ -85,6 +86,23 @@ setState -> element.markNeedsBuild -> buildOwner.scheduleBuildFor * -> onBuildSc
 Display pulse
 jank / double buffering / triple buffering
 scheduleFrame -> window.scheduleFrame ----> VSync -> schedulerBinding._handleBeginFrame -> @ scheduleCallbacks
+
+/// animation
+
+/// layout
+constraints flow down, size flow up
+pipelineOwner.flushLayout -> dirtyNodes(renderObject)._layoutWithoutResize -> (renderObject.)performLayout -> child.layout/performResize/performLayout
+Container()
+Center(Container())     layout -> size -> childParentData.offset
+
+/// paint
+repaintBoundary
+markNeedsCompositingBitsUpdate
+flushCompositingBits -> node._updateCompositingBits
+
+/// navigator
+
+
 
 
 

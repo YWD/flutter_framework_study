@@ -21,8 +21,9 @@ void main() {
   // runApp(ProviderRoute());
   // runApp(RebuildContainer());
   // runApp(TurnBoxRoute());
-  runApp(WidgetLifecycle());
+  // runApp(WidgetLifecycle());
 
+  runApp(Container(color: Colors.red,));
   // todo text yellow underline
   // todo text size
   // todo divider
