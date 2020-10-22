@@ -46,4 +46,4 @@ ios/
 # idea
 **/.idea/workspace.xml **/.idea/tasks.xml
 
-lib/*
+entry.dart
