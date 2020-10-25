@@ -40,7 +40,7 @@ app.*.symbols
 # Obfuscation related
 app.*.map.json
 
-.metadata
-
 android/
 ios/
+
+pubspec.lock
