@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # flutter_web
 
 A new Flutter web application.
@@ -14,3 +15,8 @@ A few resources to get you started if this is your first Flutter project:
 For help getting started with Flutter, view our
 [online documentation](https://flutter.dev/docs), which offers tutorials,
 samples, guidance on mobile development, and a full API reference.
+=======
+# web_app
+
+Flutter framework study.
+>>>>>>> 4edb26943db33b24c4d9a864c845f7128c438bb1

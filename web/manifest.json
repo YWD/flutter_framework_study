@@ -1,6 +1,11 @@
 {
+<<<<<<< HEAD
     "name": "flutter_web",
     "short_name": "flutter_web",
+=======
+    "name": "web_app",
+    "short_name": "web_app",
+>>>>>>> 4edb26943db33b24c4d9a864c845f7128c438bb1
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

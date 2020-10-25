@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
-
-import 'app_dev/state_manage/provider_study.dart';
-import 'widgets_study/lifecycle.dart';
+// import 'app_dev/state_manage/provider_study.dart';
+// import 'widgets_study/lifecycle.dart';
+// import 'package:web_app/app_dev/navigator/navigator_study.dart';
+// import 'package:web_app/app_dev/navigator/nested_navigator.dart';
+// import 'package:web_app/app_dev/router/books_app.dart';
+// import 'package:web_app/widgets_study/app_widget_tree.dart';
+// import 'package:web_app/widgets_study/lifecycle.dart';
+// import 'package:web_app/widgets_study/rebuild_sub_widget.dart';
+//
+// import 'app_dev/state_manage/provider_study.dart';
+// import 'build_process/source_code_block.dart';
+// import 'widgets_study/did_update_widget.dart';
 
 void main() {
   // runApp(SourceCodeBlock());
@@ -15,6 +24,12 @@ void main() {
   // runApp(TurnBoxRoute());
   // runApp(WidgetLifecycle());
   // runApp(MyApp());
+
+
+  // todo text yellow underline
+  // todo text size
+  // todo divider
+  // todo constraint
 
   runApp(GestureDetector(onTap: () {
     debugDumpLayerTree();
@@ -119,7 +134,10 @@ class _MyHomePageState extends State<MyHomePage> {
             ),
             Text(
               '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+              style: Theme
+                  .of(context)
+                  .textTheme
+                  .headline4,
             ),
           ],
         ),

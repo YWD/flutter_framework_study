@@ -106,3 +106,37 @@ scheduleFrame -> window.scheduleFrame ----> VSync -> schedulerBinding._handleBeg
 /// Timer timeline
 
 /// thread
+
+/// navigator
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 4edb26943db33b24c4d9a864c845f7128c438bb1
