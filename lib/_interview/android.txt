@@ -1,0 +1,25 @@
+/// app launch process
+Activity
+Instrumentation
+
+ActivityManagerService SystemServer
+ActivityStarter
+
+ActivityRecord
+TaskRecord
+ActivityTaskRecord
+ActivityStackSupervisor
+
+ActivityManager
+ActivityTaskManager
+
+ActivityThread
+    ApplicationThread
+
+/// binder mechanism
+
+/// window vs flutter window
+
+/// hotfix
+
+/// thread
