@@ -1,25 +1,70 @@
 /// app launch process
+android8 api level 26 https://www.jianshu.com/p/03ec8203919e
+android10 api level 29 https://blog.csdn.net/yhaolpz/article/details/105347247
+
+process: init / zygote / system_server
+
+Activity#startActivity#startActivityForResult
+  Instrumentation#execStartActivity
+    ActivityManager.getService
+      ActivityManagerService.startActivity
+        ActivityStarter
+          ActivityStackSupervisor
+            ActivityStack
+          ActivityStackSupervisor
+      ActivityManagerService
+        Process.start -> ZygoteInit.main(server) -> fork -> entryPoint
+        ActivityThread.main
+        activityThread.attach
+      ActivityManagerService.attachApplication(mAppThread)
+        thread#bindApplication()
+          ActivityThread#sendMessage(H.BIND_APPLICATION, data)
+          ActivityThread#handleBindApplication()
+          Application#attach(context)
+          mInstrumentation#callApplicationOnCreate()
+          Application#onCreate()
+        mStackSupervisor#attachApplicationLocked()
+          ActivityThread#sendMessage(H.LAUNCH_ACTIVITY, r)
+          ActivityThread#handleLaunchActivity()
+          activity.attach()
+          mInstrumentation#callActivityOnCreate()
+          Activity#onCreate()
+
+android8 api level 26
 Activity
 Instrumentation
-
-ActivityManagerService SystemServer
+ActivityManagerService
 ActivityStarter
-
-ActivityRecord
-TaskRecord
-ActivityTaskRecord
-ActivityStackSupervisor
-
-ActivityManager
-ActivityTaskManager
-
-ActivityThread
+ActivityStackSupervisor(LaunchModel)
+ActivityStack(TaskRecord(ActivityRecord)
+Process
+ActivityThread(mH
     ApplicationThread
 
-/// binder mechanism
+android10 api level 29
+ActivityTaskManager
+ClientTransactionHandler
+ProcessList
 
 /// window vs flutter window
+// android window
+activity#attach -> window=PhoneWindow window.setCallback WindowManager
+PhoneWindow.setContentView
+-> installDecor
+    DecorView
+-> generateLayout
+    decorView.onResourcesLoaded -> inflateXml
+    mContentParent <- decorView.findViewById
+-> mLayoutInflater.inflate(layoutResID, mContentParent)
+
+handleResumeActivity -> WindowManagerImpl.addView -> WindowManagerGlobal.addView -> ViewRootImpl.setView
+        #### IWindowManager IWindowSession ---- WindowManagerService
+        #### IWindow ---- ViewRootImpl inner W
+        #### mWindowSession.addToDisplay -> WindowManagerService.addWindow
 
 /// hotfix
 
+
 /// thread
+
+/// binder mechanism
