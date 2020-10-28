@@ -63,7 +63,11 @@ handleResumeActivity -> WindowManagerImpl.addView -> WindowManagerGlobal.addView
         #### mWindowSession.addToDisplay -> WindowManagerService.addWindow
 
 /// hotfix
-
+DexPathList class1.dex ...
+Elements dex提前
+ClassLoader PathClassLoader BootClassLoader 双亲委托机制
+reflect
+字节码插桩
 
 /// thread
 

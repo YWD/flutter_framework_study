@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web/app_dev/state_manage/provider_example.dart';
 // import 'app_dev/state_manage/provider_study.dart';
 // import 'widgets_study/lifecycle.dart';
 // import 'package:web_app/app_dev/navigator/navigator_study.dart';
@@ -24,6 +25,7 @@ void main() {
   // runApp(TurnBoxRoute());
   // runApp(WidgetLifecycle());
   // runApp(MyApp());
+  runApp(ProviderExample());
 
 
   // todo text yellow underline
@@ -31,9 +33,9 @@ void main() {
   // todo divider
   // todo constraint
 
-  runApp(GestureDetector(onTap: () {
-    debugDumpLayerTree();
-  },child: Container(color: Colors.orange,child: PhysicalModel(color: Colors.red, child: Container(margin: EdgeInsets.all(50),color: Colors.yellow,width: 200, height: 200,),))));
+  // runApp(GestureDetector(onTap: () {
+  //   debugDumpLayerTree();
+  // },child: Container(color: Colors.orange,child: PhysicalModel(color: Colors.red, child: Container(margin: EdgeInsets.all(50),color: Colors.yellow,width: 200, height: 200,),))));
 }
 
 class MyApp extends StatelessWidget {

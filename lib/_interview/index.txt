@@ -1,0 +1,19 @@
+/// 有针对、抓重点、必须掌握的内容
+## flutter widget 构建过程
+## state management 状态管理
+
+## network library 网络请求框架
+
+## 编程语言
+
+/// 数据结构与算法
+
+/// 需要熟悉了解的东西
+## NDK & JNI
+
+## jvm
+
+## binder 通信
+
+/// todo
+不同框架为什么用不同语言交互开发

@@ -97,6 +97,19 @@ Display pulse
 jank / double buffering / triple buffering
 scheduleFrame -> window.scheduleFrame ----> VSync -> schedulerBinding._handleBeginFrame -> @ scheduleCallbacks
 
+/// state management
+// bloc / redux / provider
+
+flutter_bloc
+stream / RxDart (reactive programming is programming with asynchronous data stream) / StreamBuilder
+BLoC (business logic component) statefulWidget vs inheritedWidget
+
+provider
+ChangeNotifier / InheritedWidget / Builder
+
+redux
+
+
 /// animation
 
 /// navigator

@@ -43,9 +43,6 @@ app.*.map.json
 android/
 ios/
 
-<<<<<<< HEAD
 pubspec.lock
-=======
 # idea
 **/.idea/workspace.xml **/.idea/tasks.xml
->>>>>>> 4edb26943db33b24c4d9a864c845f7128c438bb1

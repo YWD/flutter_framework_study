@@ -71,14 +71,7 @@ Row {
 slot IndexedSlot<Element?>(i, previousChild)
 
 
-<<<<<<< HEAD
 /// runApp(Container(color: Colors.red))
-
-Container {             jaj {
-
-  color: Colors.red     }
-}
-
 
 				RenderView {
 					child: _RenderColoredBox();
