@@ -3,6 +3,64 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+class COut extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return CProvider(CCount(0), child: CRoute());
+  }
+}
+
+
+class CRoute extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Column(children: [
+      Builder(builder: (context) {
+        CCount c = CProvider.of(context).data;
+        return Text('$c');
+      }),
+      FlatButton(onPressed: () {
+        CCount c = CProvider.of(context).data;
+        c.add();
+      }, child: Icon(Icons.add)),
+    ],);
+  }
+}
+
+
+class CProvider<T> extends InheritedWidget {
+  CProvider(this.data, {Key key , @required this.child}): super(key: key, child: child);
+
+  final T data;
+  final Widget child;
+
+  @override
+  bool updateShouldNotify(covariant InheritedWidget oldWidget) {
+    return true;
+  }
+
+  Widget build(BuildContext context) {
+    return this.child;
+  }
+
+  static CProvider of<T>(BuildContext context) {
+    // ChangeNotifier notifier = data as ChangeNotifier;
+    // notifier.addListener(context);
+    return context.findAncestorWidgetOfExactType<CProvider>();
+  }
+}
+
+class CCount extends ChangeNotifier {
+  CCount(this.count);
+
+  int count;
+
+  void add() {
+    count++;
+    notifyListeners();
+  }
+}
+
 class ProviderExample extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
