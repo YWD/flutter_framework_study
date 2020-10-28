@@ -108,7 +108,7 @@ provider
 ChangeNotifier / InheritedWidget / Builder
 
 redux
-
+store / reducer / action
 
 /// animation
 

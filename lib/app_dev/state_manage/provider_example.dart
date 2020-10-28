@@ -51,6 +51,7 @@ class MyHomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('MyHomePage build');
     return Scaffold(
       appBar: AppBar(
         title: const Text('Example'),
@@ -87,6 +88,7 @@ class Count extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('Count build');
     return Text(
 
       /// Calls `context.watch` to make [MyHomePage] rebuild when [Counter] changes.
