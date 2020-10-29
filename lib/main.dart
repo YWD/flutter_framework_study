@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web/app_dev/state_manage/provider_example.dart';
+import 'package:flutter_web/app_dev/state_manage/provider_study.dart';
 // import 'app_dev/state_manage/provider_study.dart';
 // import 'widgets_study/lifecycle.dart';
 // import 'package:web_app/app_dev/navigator/navigator_study.dart';
@@ -25,7 +26,11 @@ void main() {
   // runApp(TurnBoxRoute());
   // runApp(WidgetLifecycle());
   // runApp(MyApp());
-  runApp(ProviderExample());
+  // runApp(ProviderExample());
+  // runApp(PRoute());
+  // runApp(PPRoute());
+  // runApp(ProviderRoute());
+  runApp(PPPRoute());
 
 
   // todo text yellow underline
