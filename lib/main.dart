@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web/app_dev/state_manage/1.dart';
 import 'package:flutter_web/app_dev/state_manage/provider_example.dart';
 import 'package:flutter_web/app_dev/state_manage/provider_study.dart';
+import 'package:flutter_web/app_dev/state_manage/provider_use_case/mutil.dart';
+import 'package:flutter_web/app_dev/state_manage/provider_use_case/simple_notifier.dart';
+
+import 'app_dev/state_manage/provider_use_case/simple.dart';
 // import 'app_dev/state_manage/provider_study.dart';
 // import 'widgets_study/lifecycle.dart';
 // import 'package:web_app/app_dev/navigator/navigator_study.dart';
@@ -32,7 +36,12 @@ void main() {
   // runApp(PPRoute());
   // runApp(ProviderRoute());
   // runApp(PPPRoute());
-  runApp(Parent());
+  // runApp(Parent());
+  // runApp(ProviderSimpleNotifier());
+  runApp(ProviderSimple());
+  // runApp(ProviderSimpleValue());
+  // runApp(MultiProvide());
+
 
 
   // todo text yellow underline
