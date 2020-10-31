@@ -1,0 +1,23 @@
+InheritedProvider {
+    _delegate:
+}
+
+
+_InheritedProviderScope {
+    owner:
+    createElement:
+}
+
+_InheritedProviderScopeElement {
+    _delegateState:
+    value: _delegateState.value;
+    
+    didChangeDependencies:
+    updateDependencies:
+    update:
+    updated:
+    performRebuild:
+    build:
+    markNeedsNotifyDependents:
+    notifyDependent:
+}

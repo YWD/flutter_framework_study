@@ -1,4 +1,8 @@
 /// protocol
 http/https/
 
+// todo
+get / post
+UrlEncoded / form / file
+
 ///according to dio library analyze network library design implement

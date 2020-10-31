@@ -1,8 +1,10 @@
 /// 有针对、抓重点、必须掌握的内容
 ## flutter widget 构建过程
 ## state management 状态管理
-
 ## network library 网络请求框架
+## Navigator 混合
+## Animation
+
 
 ## 编程语言
 

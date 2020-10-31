@@ -1,0 +1,36 @@
+@immutable
+abstract class _Delegate<T> {
+  _DelegateState<T, _Delegate<T>> createState();
+
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {}
+}
+
+abstract class _DelegateState<T, D extends _Delegate<T>> {
+  _InheritedProviderScopeElement<T> element;
+
+  T get value;
+
+  D get delegate => element.widget.owner._delegate as D;
+
+  bool get hasValue;
+
+  bool debugSetInheritedLock(bool value) {
+    return element._debugSetInheritedLock(value);
+  }
+
+  bool willUpdateDelegate(D newDelegate) => false;
+
+  void dispose() {}
+
+  void debugFillProperties(DiagnosticPropertiesBuilder properties) {}
+
+  void build(bool isBuildFromExternalSources) {}
+}
+
+abstract class InheritedContext<T> extends BuildContext {
+  T get value;
+
+  void markNeedsNotifyDependents();
+
+  bool get hasValue;
+}

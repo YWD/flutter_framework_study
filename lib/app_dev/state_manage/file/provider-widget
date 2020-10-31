@@ -1,0 +1,26 @@
+ChangeNotifierProvider ->
+ListenableProvider ->
+InheritedProvider {
+	create:
+	_child = child:
+
+	dispose:
+
+	startListening:
+	_delegate:
+}
+
+_InheritedProviderScope {
+	owner: 
+	child:
+}
+
+
+
+
+
+
+
+Builder {
+	bulder:
+}

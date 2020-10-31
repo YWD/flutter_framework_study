@@ -1,0 +1,49 @@
+build process
+
+
+
+ChangeNotifierProvider
+	build
+	buildWithChild
+_InheritedProviderScope
+	createElement
+_InheritedProviderScopeElement
+	mount
+	super.mount
+	_updateInheritance
+	_firstBuild
+	rebuild
+	performRebuild
+		_firstBuild
+		_delegate.createState
+	super.performRebuild
+	build
+_CreateInheritedProvider
+	create
+_InheritedProviderScopeElement
+	build -------------> widget.child
+ 	updateChild
+ 	inflateWidget
+Builder
+ 	createElement
+StatelessElement
+ 	mount
+ 	...
+ 	build
+Provider
+	of ----> context.updateDependents
+_InheritedProviderScopeElement
+	value
+_CreateInheritedProviderState
+	value ******** startListening
+***
+MyData
+	addListener	(inheritedElement
+	add
+	notifyListeners
+_InheritedProviderScopeElement
+	markNeedsNotifyDependents
+_InheritedProviderScopeElement
+	build
+	notifyClients
+	notifyDependent

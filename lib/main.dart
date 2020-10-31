@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web/app_dev/state_manage/1.dart';
 import 'package:flutter_web/app_dev/state_manage/provider_example.dart';
 import 'package:flutter_web/app_dev/state_manage/provider_study.dart';
 // import 'app_dev/state_manage/provider_study.dart';
@@ -30,7 +31,8 @@ void main() {
   // runApp(PRoute());
   // runApp(PPRoute());
   // runApp(ProviderRoute());
-  runApp(PPPRoute());
+  // runApp(PPPRoute());
+  runApp(Parent());
 
 
   // todo text yellow underline

@@ -1,0 +1,31 @@
+_CreateInheritedProvider {
+	create:
+	startListening:
+	dispose:
+}
+
+_CreateInheritedProviderState {
+	element:
+	_previousWidget: delegate
+	_value:
+}
+
+
+
+_InheritedProviderScopeElement {
+	_inheritedWidgets: 获取父类添加自己
+	_delegateState:
+	value:	MyData()
+	_dependents: {StatelessElement: Object}
+}
+
+
+
+
+
+
+
+
+StatelessElement {
+	_dependencies: add(ancestor)
+}

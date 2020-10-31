@@ -1,0 +1,62 @@
+ChangeNotifierProvider -> ListenableProvider -> InheritedProvider {
+    create: (_) => MyData(),
+    _child = child: builder,
+
+    static void _dispose(BuildContext context, ChangeNotifier notifier) {
+        notifier?.dispose();
+    }
+
+    static VoidCallback _startListening(InheritedContext<Listenable> e, Listenable value,) {
+        value?.addListener(e.markNeedsNotifyDependents);
+        return () => value?.removeListener(e.markNeedsNotifyDependents);
+    }
+    _delegate: _CreateInheritedProvider
+}
+
+    _CreateInheritedProvider {
+        create: ↑
+        startListening: ↑
+        dispose: ↑
+    }
+
+Builder {
+    builder: (context) {
+        MyData data = Provider.of(context);
+        return Text('data:${data.count}'
+    }
+}
+
+build ================================
+
+build -> buildWithChild
+
+_InheritedProviderScope {
+    owner: this,
+    child: builder,
+}
+
+createElement
+
+_InheritedProviderScopeElement {
+    widget: _InheritedProviderScope
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
