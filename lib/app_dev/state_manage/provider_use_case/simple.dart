@@ -20,8 +20,7 @@ class ProviderSimple extends StatelessWidget {
             return child;
           },
           child: Builder(builder: (context) {
-            // assert failed todo
-            return Text('${context.read<Book>().name}: ${context.read<Book>().no}');
+            return Text('${context.watch<Book>().name}: ${context.watch<Book>().no}');
 
             // return Text('${Provider.of<Book>(context).name}: ${Provider.of<Book>(context).no}');
             // return Text('${context.select((Book book) => book.name)}:-- ${context.select((Book book) => book.no)}');

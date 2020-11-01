@@ -4,6 +4,7 @@ import 'package:flutter_web/app_dev/state_manage/provider_example.dart';
 import 'package:flutter_web/app_dev/state_manage/provider_study.dart';
 import 'package:flutter_web/app_dev/state_manage/provider_use_case/mutil.dart';
 import 'package:flutter_web/app_dev/state_manage/provider_use_case/simple_notifier.dart';
+import 'package:flutter_web/widgets_study/builder.dart';
 
 import 'app_dev/state_manage/provider_use_case/simple.dart';
 // import 'app_dev/state_manage/provider_study.dart';
@@ -38,9 +39,10 @@ void main() {
   // runApp(PPPRoute());
   // runApp(Parent());
   // runApp(ProviderSimpleNotifier());
-  runApp(ProviderSimple());
+  // runApp(ProviderSimple());
   // runApp(ProviderSimpleValue());
   // runApp(MultiProvide());
+  runApp(BuilderWrapper());
 
 
 
