@@ -1,5 +1,6 @@
 /// protocol
 http/https/
+http2/http3 3次握手、四次挥手
 
 // todo
 get / post
