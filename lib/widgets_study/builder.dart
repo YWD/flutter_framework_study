@@ -29,6 +29,15 @@ class BuilderWrapper extends StatelessWidget {
               setState(() {});
             }, child: Text('StatefulBuilder'));
           }),
+          (context) {return Container();}.call(context),  // WidgetBuilder
+          LayoutBuilder(builder: (context, constraints) {
+            if (constraints.maxWidth > 600)
+              return Container(child: Row(children: [
+                Container(width: 100, height: 100, color: Colors.red,),
+                Container(width: 100, height: 100, color: Colors.blue,),
+              ],),);
+            return Container(width: 100, height: 100, color: Colors.red,);
+          }),
           // todo stream controller
           StreamBuilder<String>(stream: myStream(), builder: (context, snapshot) {
             return Text('StreamBuilder: ${snapshot.data}');

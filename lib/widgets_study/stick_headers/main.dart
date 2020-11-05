@@ -4,9 +4,7 @@ import 'package:meta/meta.dart';
 import './images.dart';
 import 'widget.dart';
 
-void main() => runApp(new ExampleApp());
-
-class ExampleApp extends StatelessWidget {
+class StickHeaderApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(

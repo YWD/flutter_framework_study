@@ -18,7 +18,7 @@ import './render.dart';
 ///  -1.0 >= value >= 0.0: past stuck
 /// ```
 ///
-typedef Widget StickyHeaderWidgetBuilder(BuildContext context, double stuckAmount);
+typedef StickyHeaderWidgetBuilder =  Widget Function(BuildContext context, double stuckAmount);
 
 /// Stick Header Widget
 ///

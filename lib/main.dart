@@ -1,26 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_web/app_dev/state_manage/1.dart';
-import 'package:flutter_web/app_dev/state_manage/provider_example.dart';
-import 'package:flutter_web/app_dev/state_manage/provider_study.dart';
-import 'package:flutter_web/app_dev/state_manage/provider_use_case/mutil.dart';
-import 'package:flutter_web/app_dev/state_manage/provider_use_case/simple_notifier.dart';
 import 'package:flutter_web/widgets_study/builder.dart';
-
-import 'app_dev/state_manage/provider_use_case/simple.dart';
-// import 'app_dev/state_manage/provider_study.dart';
-// import 'widgets_study/lifecycle.dart';
-// import 'package:web_app/app_dev/navigator/navigator_study.dart';
-// import 'package:web_app/app_dev/navigator/nested_navigator.dart';
-// import 'package:web_app/app_dev/router/books_app.dart';
-// import 'package:web_app/widgets_study/app_widget_tree.dart';
-// import 'package:web_app/widgets_study/lifecycle.dart';
-// import 'package:web_app/widgets_study/rebuild_sub_widget.dart';
-//
-// import 'app_dev/state_manage/provider_study.dart';
-// import 'build_process/source_code_block.dart';
-// import 'widgets_study/did_update_widget.dart';
+import 'package:flutter_web/widgets_study/stick_headers/main.dart';
+import 'package:flutter_web/widgets_study/stick_headers/practice/my_render.dart';
 
 void main() {
+  runApp(MyRender());
+  // runApp(StickHeaderApp());
+  // runApp(BuilderWrapper());
   // runApp(SourceCodeBlock());
   // runApp(AppWidgetTree());
   // runApp(navigatorStudyApp);
@@ -42,7 +28,7 @@ void main() {
   // runApp(ProviderSimple());
   // runApp(ProviderSimpleValue());
   // runApp(MultiProvide());
-  runApp(BuilderWrapper());
+  // runApp(BuilderWrapper());
 
 
 
