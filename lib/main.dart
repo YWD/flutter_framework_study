@@ -3,8 +3,11 @@ import 'package:flutter_web/widgets_study/builder.dart';
 import 'package:flutter_web/widgets_study/stick_headers/main.dart';
 import 'package:flutter_web/widgets_study/stick_headers/practice/my_render.dart';
 
+import 'widgets_study/cloud/cloud_demo_page.dart';
+
 void main() {
-  runApp(MyRender());
+  runApp(CloudDemoPage());
+  // runApp(MyRender());
   // runApp(StickHeaderApp());
   // runApp(BuilderWrapper());
   // runApp(SourceCodeBlock());
