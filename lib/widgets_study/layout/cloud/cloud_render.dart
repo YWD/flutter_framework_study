@@ -168,6 +168,8 @@ class RenderCloud extends RenderBox
   ///设置绘制默认
   @override
   void paint(PaintingContext context, Offset offset) {
+    print('painting.....');
+    context.canvas.drawCircle(Offset.zero, 20, Paint()..color = Colors.red);
     if (!_needClip || _overflow != Overflow.clip) {
       defaultPaint(context, offset);
     } else {

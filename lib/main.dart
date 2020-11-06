@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_web/widgets_study/builder.dart';
-import 'package:flutter_web/widgets_study/stick_headers/main.dart';
-import 'package:flutter_web/widgets_study/stick_headers/practice/my_render.dart';
+import 'package:flutter_web/widgets_study/layout/ctrip.dart';
 
-import 'widgets_study/cloud/cloud_demo_page.dart';
+import 'widgets_study/layout/circle_circle.dart';
+import 'widgets_study/layout/stick_headers/main.dart';
 
 void main() {
-  runApp(CloudDemoPage());
+  runApp(CTripPage());
+  // runApp(CircleCircle());
   // runApp(MyRender());
   // runApp(StickHeaderApp());
   // runApp(BuilderWrapper());

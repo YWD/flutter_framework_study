@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 
-import './images.dart';
+import 'images.dart';
 import 'widget.dart';
 
 class StickHeaderApp extends StatelessWidget {

@@ -4,7 +4,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
-import './render.dart';
+import 'render.dart';
 
 /// Builder called during layout to allow the header's content to be animated or styled based
 /// on the amount of stickyness the header has.

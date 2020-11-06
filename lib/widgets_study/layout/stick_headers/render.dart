@@ -1,7 +1,3 @@
-// Copyright 2018 Simon Lightfoot. All rights reserved.
-// Use of this source code is governed by a the MIT license that can be
-// found in the LICENSE file.
-
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:meta/meta.dart';
@@ -33,14 +29,14 @@ class RenderStickyHeader extends RenderBox
     @required ScrollableState scrollable,
     RenderStickyHeaderCallback callback,
     bool overlapHeaders: false,
-    RenderBox header,
-    RenderBox content,
+    // RenderBox header,
+    // RenderBox content,
   })  : assert(scrollable != null),
         _scrollable = scrollable,
         _callback = callback,
         _overlapHeaders = overlapHeaders {
-    if (content != null) add(content);
-    if (header != null) add(header);
+    // if (content != null) add(content);
+    // if (header != null) add(header);
   }
 
   set scrollable(ScrollableState newValue) {
@@ -118,11 +114,16 @@ class RenderStickyHeader extends RenderBox
 
     // determine by how much the header should be stuck to the top
     final double stuckOffset = determineStuckOffset();
+    print('stuckOffset:$stuckOffset');
+    double delta = 0;
+    if (stuckOffset != 0 && stuckOffset < 48) {
+      delta = 48 - delta;
+    }
 
     // place header over content relative to scroll offset
     final double maxOffset = height - headerHeight;
     final headerParentData = _headerBox.parentData as MultiChildLayoutParentData;
-    headerParentData.offset = new Offset(0.0, max(0.0, min(-stuckOffset, maxOffset)));
+    headerParentData.offset = new Offset(0.0, max(0.0, min(-stuckOffset + delta, maxOffset)));
 
     // report to widget how much the header is stuck.
     if (_callback != null) {
@@ -151,39 +152,39 @@ class RenderStickyHeader extends RenderBox
     }
   }
 
-  @override
-  double computeMinIntrinsicWidth(double height) {
-    return _contentBox.getMinIntrinsicWidth(height);
-  }
-
-  @override
-  double computeMaxIntrinsicWidth(double height) {
-    return _contentBox.getMaxIntrinsicWidth(height);
-  }
-
-  @override
-  double computeMinIntrinsicHeight(double width) {
-    return _overlapHeaders ? _contentBox.getMinIntrinsicHeight(width)
-        : (_headerBox.getMinIntrinsicHeight(width) +
-        _contentBox.getMinIntrinsicHeight(width));
-  }
-
-  @override
-  double computeMaxIntrinsicHeight(double width) {
-    return _overlapHeaders ? _contentBox.getMaxIntrinsicHeight(width)
-        : (_headerBox.getMaxIntrinsicHeight(width) +
-        _contentBox.getMaxIntrinsicHeight(width));
-  }
-
-  @override
-  double computeDistanceToActualBaseline(TextBaseline baseline) {
-    return defaultComputeDistanceToHighestActualBaseline(baseline);
-  }
-
-  @override
-  bool hitTestChildren(HitTestResult result, {Offset position}) {
-    return defaultHitTestChildren(result, position: position);
-  }
+  // @override
+  // double computeMinIntrinsicWidth(double height) {
+  //   return _contentBox.getMinIntrinsicWidth(height);
+  // }
+  //
+  // @override
+  // double computeMaxIntrinsicWidth(double height) {
+  //   return _contentBox.getMaxIntrinsicWidth(height);
+  // }
+  //
+  // @override
+  // double computeMinIntrinsicHeight(double width) {
+  //   return _overlapHeaders ? _contentBox.getMinIntrinsicHeight(width)
+  //       : (_headerBox.getMinIntrinsicHeight(width) +
+  //       _contentBox.getMinIntrinsicHeight(width));
+  // }
+  //
+  // @override
+  // double computeMaxIntrinsicHeight(double width) {
+  //   return _overlapHeaders ? _contentBox.getMaxIntrinsicHeight(width)
+  //       : (_headerBox.getMaxIntrinsicHeight(width) +
+  //       _contentBox.getMaxIntrinsicHeight(width));
+  // }
+  //
+  // @override
+  // double computeDistanceToActualBaseline(TextBaseline baseline) {
+  //   return defaultComputeDistanceToHighestActualBaseline(baseline);
+  // }
+  //
+  // @override
+  // bool hitTestChildren(HitTestResult result, {Offset position}) {
+  //   return defaultHitTestChildren(result, position: position);
+  // }
 
   @override
   bool get isRepaintBoundary => true;
