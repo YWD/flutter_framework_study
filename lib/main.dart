@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_web/widgets_study/layout/cloud/cloud_demo_page.dart';
-import 'package:flutter_web/widgets_study/layout/ctrip.dart';
-import 'package:flutter_web/widgets_study/render/color_box.dart';
-
-import 'widgets_study/constraints/constraints.dart';
-import 'widgets_study/layout/circle_circle.dart';
-import 'widgets_study/layout/stick_headers/main.dart';
-import 'widgets_study/layout/stick_headers/stick_header.dart';
+import 'package:flutter_web/widgets_study/render/clock.dart';
+import 'package:flutter_web/widgets_study/render/thermometer.dart';
+import 'widgets_study/positioned.dart';
 
 void main() {
-  runApp(CloudDemoPage());
+  runApp(ThermometerPage(width: 300, degree: 50,));
+  // runApp(ClockPage());
+  // runApp(PositionDemo());
+  // runApp(CloudDemoPage());
   // runApp(StickHeaderDemo());
   // runApp(ConstraintPage());
   // runApp(ColorBox());
