@@ -51,7 +51,7 @@ class ThermometerPageState extends State<ThermometerPage>
   @override
   Widget build(BuildContext context) {
     return CustomPaint(
-      painter: ThermometerPainter(width: widget.width, degree: widget.degree*_fraction),
+      painter: ThermometerPainter(width: widget.width, degree: widget.degree * _fraction),
       size: Size(widget.width, widget.width),
     );
   }
@@ -158,8 +158,8 @@ class ThermometerPainter extends CustomPainter {
 
     canvas.drawPath(innerBorder, innerPaint);
 
-    final lightw = cos(degToRad(30)) * (radius - 10);
-    final lighth = sin(degToRad(30)) * (radius - 10);
+    final lightW = cos(degToRad(30)) * (radius - 10);
+    final lightH = sin(degToRad(30)) * (radius - 10);
     final lightPath = Path();
     final lightPaint = Paint()
       ..color = Colors.white
@@ -173,12 +173,12 @@ class ThermometerPainter extends CustomPainter {
     lightPath.addPath(
         Path()
           ..addPolygon([
-            Offset(radius + lightw, radius - lighth + 1),
-            Offset(degreeW - 8, radius - lighth + 1)
+            Offset(radius + lightW, radius - lightH + 1),
+            Offset(degreeW - 8, radius - lightH + 1)
           ], true),
         Offset(0, 0));
     lightPath.addArc(
-        Rect.fromCircle(center: Offset(degreeW - 8, radius), radius: lighth),
+        Rect.fromCircle(center: Offset(degreeW - 8, radius), radius: lightH),
         degToRad(-90),
         degToRad(60));
     canvas.drawPath(lightPath, lightPaint);

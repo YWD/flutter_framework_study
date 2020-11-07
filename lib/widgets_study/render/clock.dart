@@ -30,23 +30,23 @@ class ClockPage extends StatefulWidget {
 
 class ClockPageState extends State<ClockPage> {
   DateTime datetime;
-  Timer timer;
+  // Timer timer;
 
   @override
   void initState() {
     super.initState();
     datetime = DateTime.now();
-    timer = Timer.periodic(Duration(seconds: 1), (timer) {
-      setState(() {
-        datetime = DateTime.now();
-      });
-    });
+    // timer = Timer.periodic(Duration(seconds: 1), (timer) {
+    //   setState(() {
+    //     datetime = DateTime.now();
+    //   });
+    // });
   }
 
   @override
   void dispose() {
     super.dispose();
-    timer.cancel();
+    // timer.cancel();
   }
 
   @override
@@ -78,19 +78,19 @@ class ClockPainter extends CustomPainter {
         this.handColor = Colors.black,
         this.numberColor = Colors.black,
         this.borderColor = Colors.black}) {
-    borderWidth = radius / 14;
+    borderWidth = radius / 15;
     final secondDistance = radius - borderWidth * 2;
     //init seconds offset
     for (var i = 0; i < 60; i++) {
       Offset offset = Offset(
-          cos(degToRad(6 * i - 90)) * secondDistance + radius,
-          sin(degToRad(6 * i - 90)) * secondDistance + radius);
+          sin(degToRad(6 * i)) * secondDistance + radius,
+          cos(degToRad(6 * i)) * secondDistance + radius);
       secondsOffset.add(offset);
     }
 
     textPainter = new TextPainter(
       textAlign: TextAlign.center,
-      textDirection: TextDirection.rtl,
+      textDirection: TextDirection.ltr,
     );
     angle = degToRad(360 / 60);
   }
@@ -118,7 +118,7 @@ class ClockPainter extends CustomPainter {
       canvas.translate(radius, radius);
 
       List<Offset> bigger = [];
-      for (var i = 0; i < secondsOffset.length; i++) {
+      for (var i = 0; i < secondsOffset.length; i += 5) {
         if (i % 5 == 0) {
           bigger.add(secondsOffset[i]);
 
@@ -140,9 +140,12 @@ class ClockPainter extends CustomPainter {
           textPainter.layout();
           textPainter.paint(canvas,
               new Offset(-(textPainter.width / 2), -(textPainter.height / 2)));
+          // canvas.drawRect(Rect.fromLTWH(-textPainter.width / 2, -textPainter.height / 2, textPainter.width, textPainter.height), Paint()..color = Colors.green ..style = PaintingStyle.stroke);
+          // canvas.drawRect(Rect.fromLTWH(0, 0, textPainter.width, textPainter.height), Paint()..color = Colors.red ..style = PaintingStyle.stroke);
+          // canvas.drawPaint(textPainter);
           canvas.restore();
         }
-        canvas.rotate(angle);
+        canvas.rotate(angle * 5);
       }
       canvas.restore();
 
@@ -157,12 +160,16 @@ class ClockPainter extends CustomPainter {
     final second = datetime.second;
 
     // draw hour hand
-    Offset hourHand1 = Offset(
-        radius - cos(degToRad(360 / 12 * hour - 90)) * (radius * 0.2),
-        radius - sin(degToRad(360 / 12 * hour - 90)) * (radius * 0.2));
-    Offset hourHand2 = Offset(
-        radius + cos(degToRad(360 / 12 * hour - 90)) * (radius * 0.5),
-        radius + sin(degToRad(360 / 12 * hour - 90)) * (radius * 0.5));
+    // Offset hourHand1 = Offset(
+    //     radius - cos(degToRad(360 / 12 * hour - 90)) * (radius * 0.2),
+    //     radius - sin(degToRad(360 / 12 * hour - 90)) * (radius * 0.2));
+    // Offset hourHand2 = Offset(
+    //     radius + cos(degToRad(360 / 12 * hour - 90)) * (radius * 0.5),
+    //     radius + sin(degToRad(360 / 12 * hour - 90)) * (radius * 0.5));
+    Offset hourHand1;
+    Offset hourHand2;
+    hourHand1 = Offset(radius + sin(hour / 12 * 2 * pi) * (radius * 0.5), radius - cos(hour / 12 * 2 * pi) * (radius * 0.5));
+    hourHand2 = Offset(radius - sin(hour / 12 * 2 * pi) * (radius * 0.2), radius + cos(hour / 12 * 2 * pi) * (radius * 0.2));
     final hourPaint = Paint()
       ..color = handColor
       ..strokeWidth = 8 * scale;
@@ -209,6 +216,6 @@ class ClockPainter extends CustomPainter {
   }
 }
 
-num degToRad(num deg) => deg * (pi / 180.0);
-
-num radToDeg(num rad) => rad * (180.0 / pi);
+/// 角度(degree)、弧度(radian)转换
+num degToRad(num deg) => deg * (2 * pi / 360.0);
+num radToDeg(num rad) => rad * (360.0 / (2 * pi));

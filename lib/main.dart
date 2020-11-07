@@ -2,10 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web/widgets_study/render/clock.dart';
 import 'package:flutter_web/widgets_study/render/thermometer.dart';
 import 'widgets_study/positioned.dart';
+import 'widgets_study/render/paint.dart';
 
 void main() {
-  runApp(ThermometerPage(width: 300, degree: 50,));
-  // runApp(ClockPage());
+  // runApp(MyPaintDemo());
+  // runApp(ThermometerPage(width: 300, degree: 50,));
+  runApp(ClockPage());
   // runApp(PositionDemo());
   // runApp(CloudDemoPage());
   // runApp(StickHeaderDemo());
