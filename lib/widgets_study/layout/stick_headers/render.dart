@@ -114,7 +114,7 @@ class RenderStickyHeader extends RenderBox
 
     // determine by how much the header should be stuck to the top
     final double stuckOffset = determineStuckOffset();
-    print('stuckOffset:$stuckOffset');
+    // print('stuckOffset:$stuckOffset');
     double delta = 0;
     if (stuckOffset != 0 && stuckOffset < 48) {
       delta = 48 - delta;
@@ -191,6 +191,7 @@ class RenderStickyHeader extends RenderBox
 
   @override
   void paint(PaintingContext context, Offset offset) {
+    // print('painting...');
     defaultPaint(context, offset);
   }
 }

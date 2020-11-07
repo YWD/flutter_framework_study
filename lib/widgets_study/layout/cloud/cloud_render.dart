@@ -106,7 +106,6 @@ class RenderCloud extends RenderBox
       childParentData.width = childSize.width;
       childParentData.height = childSize.height;
 
-      print('compute position ====================');
       var curIndex = -1;
       do {
         ///设置 xy 轴的比例
@@ -168,7 +167,6 @@ class RenderCloud extends RenderBox
   ///设置绘制默认
   @override
   void paint(PaintingContext context, Offset offset) {
-    print('painting.....');
     context.canvas.drawCircle(Offset.zero, 20, Paint()..color = Colors.red);
     if (!_needClip || _overflow != Overflow.clip) {
       defaultPaint(context, offset);

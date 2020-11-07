@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web/widgets_study/layout/cloud/cloud_demo_page.dart';
 import 'package:flutter_web/widgets_study/layout/ctrip.dart';
+import 'package:flutter_web/widgets_study/render/color_box.dart';
 
+import 'widgets_study/constraints/constraints.dart';
 import 'widgets_study/layout/circle_circle.dart';
 import 'widgets_study/layout/stick_headers/main.dart';
+import 'widgets_study/layout/stick_headers/stick_header.dart';
 
 void main() {
-  runApp(CTripPage());
+  runApp(CloudDemoPage());
+  // runApp(StickHeaderDemo());
+  // runApp(ConstraintPage());
+  // runApp(ColorBox());
+  // runApp(CTripPage());
   // runApp(CircleCircle());
   // runApp(MyRender());
   // runApp(StickHeaderApp());
