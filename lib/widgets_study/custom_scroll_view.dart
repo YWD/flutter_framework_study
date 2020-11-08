@@ -1,6 +1,27 @@
+
 import 'package:flutter/material.dart';
 
 class CustomScrollViewDemo extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: Colors.red,
+      child: ConstrainedBox(
+        constraints: BoxConstraints.tightForFinite(),
+        child: LimitedBox(
+          maxHeight: 200,
+          maxWidth: 200,
+          child: ConstrainedBox(
+            constraints: BoxConstraints.expand(),
+            child: Container(color: Colors.green),
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class CustomScrollViewDem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -22,7 +43,7 @@ class CustomScrollViewDemo extends StatelessWidget {
             SliverFixedExtentList(
               itemExtent: 50.0,
               delegate: SliverChildBuilderDelegate(
-                    (context, index) => ListTile(
+                (context, index) => ListTile(
                   title: Text("Item $index"),
                 ),
                 childCount: 30,

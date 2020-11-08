@@ -104,7 +104,6 @@ class MyRenderConstrainedBox extends RenderProxyBox {
 
   @override
   void layout(Constraints constraints, {bool parentUsesSize = false}) {
-    print('layout invoke');
     super.layout(constraints, parentUsesSize: parentUsesSize);
   }
 
@@ -112,7 +111,6 @@ class MyRenderConstrainedBox extends RenderProxyBox {
   @override
   void paint(PaintingContext context, Offset offset) {
     super.paint(context, offset);
-    print('paint invoke :$index');
   }
 
   @override
