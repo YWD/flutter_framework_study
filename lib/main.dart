@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_web/widgets_study/render/clock.dart';
-import 'package:flutter_web/widgets_study/render/thermometer.dart';
-import 'widgets_study/positioned.dart';
-import 'widgets_study/render/paint.dart';
+
+import 'widgets_study/custom_scroll_view.dart';
 
 void main() {
+  runApp(CustomScrollViewDemo());
   // runApp(MyPaintDemo());
   // runApp(ThermometerPage(width: 300, degree: 50,));
-  runApp(ClockPage());
+  // runApp(ClockPage());
   // runApp(PositionDemo());
   // runApp(CloudDemoPage());
   // runApp(StickHeaderDemo());
