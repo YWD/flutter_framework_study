@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'widgets_study/custom_scroll_view.dart';
+import 'widgets_study/listview.dart';
 
 void main() {
-  runApp(CustomScrollViewDemo());
+  runApp(ListViewDemo());
+  // runApp(CustomScrollViewDemo());
   // runApp(MyPaintDemo());
   // runApp(ThermometerPage(width: 300, degree: 50,));
   // runApp(ClockPage());
