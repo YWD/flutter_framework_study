@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 
 import 'widgets_study/listview.dart';
+import 'widgets_study/render/canvas_layer.dart';
 
 void main() {
-  runApp(ListViewDemo());
+  runApp(CanvasLayerDemo());
+  // runApp(ListViewDemo());
   // runApp(CustomScrollViewDemo());
   // runApp(MyPaintDemo());
   // runApp(ThermometerPage(width: 300, degree: 50,));
