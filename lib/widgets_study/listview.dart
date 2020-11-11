@@ -37,14 +37,33 @@ class _ListViewDemoState extends State<ListViewDemo> {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Material(
-        child: DirectionWidget(child: ListView.builder(itemBuilder: (context, index) {
-          // return ListTile(title: Text('list title $index'), trailing: CustomPaint(painter: MyPainter(),),);
-          // return ListTile(title: Text('list title $index'), trailing: MyColoredBox(color: Colors.red, child: Container(width: 20, height: 20,),),);
-          return MyColoredBox(color: Colors.red, child: Container(width: 20, height: 80,),);
-        }, controller: ctrl,)),
-      ),
+    // return MaterialApp(
+    //   debugShowCheckedModeBanner: false,
+    //   home: Scaffold(
+    //     floatingActionButton: FlatButton(onPressed: () {
+    //       debugDumpLayerTree();
+    //     }, child: Container(width: 48, height: 48, color: Colors.red,),),
+    //     body: Material(
+    //       child: DirectionWidget(child: ListView.builder(itemBuilder: (context, index) {
+    //         // return ListTile(title: Text('list title $index'), trailing: CustomPaint(painter: MyPainter(),),);
+    //         // return ListTile(title: Text('list title $index'), trailing: MyColoredBox(color: Colors.red, child: Container(width: 20, height: 20,),),);
+    //         return MyColoredBox(color: Colors.red, child: Container(width: 20, height: 250,),);
+    //       }, controller: ctrl,)),
+    //     ),
+    //   ),
+    // );
+    return DirectionWidget(
+      child: Stack(
+        alignment: Alignment.bottomRight,
+        children: [
+          ListView.builder(itemBuilder: (context, index) {
+            // return ListTile(title: Text('list title $index'), trailing: CustomPaint(painter: MyPainter(),),);
+            // return ListTile(title: Text('list title $index'), trailing: MyColoredBox(color: Colors.red, child: Container(width: 20, height: 20,),),);
+            return MyColoredBox(color: Colors.red, child: Container(width: 20, height: 250,),);
+          }, controller: ctrl,),
+          FlatButton(onPressed: () { debugDumpLayerTree();},
+            child: Container(width: 50, height: 50, color: Colors.red,),),
+        ]),
     );
   }
 }
@@ -71,12 +90,6 @@ class MyColoredBox extends SingleChildRenderObjectWidget {
   void updateRenderObject(BuildContext context, _MyRenderColoredBox renderObject) {
     renderObject.color = color;
   }
-
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(DiagnosticsProperty<Color>('color', color));
-  }
 }
 
 class _MyRenderColoredBox extends RenderProxyBoxWithHitTestBehavior {
@@ -100,8 +113,6 @@ class _MyRenderColoredBox extends RenderProxyBoxWithHitTestBehavior {
 
   @override
   void paint(PaintingContext context, Offset offset) {
-    print('color offset:$offset');
-    print('color size:$size');
     if (size > Size.zero) {
       context.canvas.drawRect(offset & size, Paint()..color = color ..style = PaintingStyle.stroke ..strokeWidth = 2);
     }
@@ -110,17 +121,3 @@ class _MyRenderColoredBox extends RenderProxyBoxWithHitTestBehavior {
     }
   }
 }
-
-class MyPainter extends CustomPainter {
-  @override
-  void paint(Canvas canvas, Size size) {
-    print('size:$size');
-    canvas.drawCircle(Offset.zero, 12, Paint()..color = Colors.red ..style = PaintingStyle.stroke);
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
-
-}
-
-
