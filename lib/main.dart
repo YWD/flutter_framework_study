@@ -1,12 +1,17 @@
 import 'package:flutter/material.dart';
 
+import 'widgets_study/app_widget_tree.dart';
 import 'widgets_study/listview.dart';
+import 'widgets_study/listview_analizy.dart';
+import 'widgets_study/my_size_indicator.dart';
 import 'widgets_study/render/canvas_layer.dart';
 import 'widgets_study/single_child_scroll_view.dart';
 
 void main() {
+  // runApp(Center(child: SizeIndicator(length: 400, direction: Axis.vertical, explain: 'length',)));
+  runApp(ListViewAnalyse());
   // runApp(SingleChildScrollV());
-  runApp(CanvasLayerDemo());
+  // runApp(CanvasLayerDemo());
   // runApp(ListViewDemo());
   // runApp(CustomScrollViewDemo());
   // runApp(MyPaintDemo());

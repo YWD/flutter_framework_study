@@ -59,7 +59,7 @@ class _ListViewDemoState extends State<ListViewDemo> {
           ListView.builder(itemBuilder: (context, index) {
             // return ListTile(title: Text('list title $index'), trailing: CustomPaint(painter: MyPainter(),),);
             // return ListTile(title: Text('list title $index'), trailing: MyColoredBox(color: Colors.red, child: Container(width: 20, height: 20,),),);
-            return MyColoredBox(color: Colors.red, child: Container(width: 20, height: 250,),);
+            return MyColoredBox(color: Colors.red, child: Container(width: 20, height: 300,),);
           }, controller: ctrl,),
           FlatButton(onPressed: () { debugDumpLayerTree();},
             child: Container(width: 50, height: 50, color: Colors.red,),),
