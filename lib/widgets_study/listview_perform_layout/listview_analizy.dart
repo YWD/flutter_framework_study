@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web/my_widgets/direction_widget.dart';
+import 'package:flutter_web/widgets_study/listview_perform_layout/listview_scroll_up.dart';
 import 'package:flutter_web/widgets_study/my_size_indicator.dart';
 
 class ListViewAnalyse extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return ListViewInitAnimate();
+    // return ListViewInitAnimate();
+    return ListViewScrollUpAnimate();
   }
 }
 
@@ -73,7 +75,8 @@ class _ListViewInitAnimateState extends State<ListViewInitAnimate> with SingleTi
                   SizeIndicator(length: 540, direction: Axis.vertical, explain: 'targetEndScrollOffset',),
                 ],
               ),
-              Container(
+              LimitedBox(
+                maxHeight: 600,
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
@@ -103,7 +106,7 @@ class _ListViewInitAnimateState extends State<ListViewInitAnimate> with SingleTi
     } else if (color1 == Colors.red) {
       length = 150;
     }
-    if (length == 0) return Container();
+    if (length == 0) return Container(height: 0,);
     return SizeIndicator(length: length, direction: Axis.vertical, explain: 'endScrollOffset', color: Colors.black,);
   }
 }

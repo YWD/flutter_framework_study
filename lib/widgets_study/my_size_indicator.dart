@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 
 class SizeIndicator extends StatelessWidget {
   final double length;
-  final double width;
+  final double height = 16;
   final double strokeWidth;
   final Axis direction;
   final Color color;
@@ -13,7 +13,6 @@ class SizeIndicator extends StatelessWidget {
   SizeIndicator({
     @required this.length,
     @required this.direction,
-    this.width = 24.0,
     this.explain = '',
     this.strokeWidth = 2.0,
     this.color = Colors.red,
@@ -21,48 +20,59 @@ class SizeIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: direction == Axis.horizontal ? length : width,
-      height: direction == Axis.horizontal ? width : length,
-      child: CustomPaint(
-        size: Size(direction == Axis.horizontal ? length : width, direction == Axis.horizontal ? width : length),
-        painter: SizeIndicatorPainter(explain: explain.isNotEmpty ? '$explain ': explain, color: color),
-      ),
+    return CustomPaint(
+      size: Size(direction == Axis.horizontal ? length : height, direction == Axis.horizontal ? height : length),
+      painter: SizeIndicatorPainter(axis: direction,explain: explain.isNotEmpty ? '$explain ': explain, color: color),
+      // child: Container(
+      //   width: direction == Axis.horizontal ? length : height,
+      //   height: direction == Axis.horizontal ? height : length,
+      // ),
     );
   }
 }
 
+/// despite orientation, we draw horizontally, then rotated if need.
 class SizeIndicatorPainter extends CustomPainter {
   String explain;
   Color color;
-  SizeIndicatorPainter({this.explain, this.color});
+  Axis axis;
+  double strokeWidth = 2;
+  double textMargin = 4;
+  double lineMargin = 4;
+  SizeIndicatorPainter({this.axis, this.explain, this.color});
 
   @override
   void paint(Canvas canvas, Size size) {
-    bool isHorizontal = size.width > size.height;
-    Paint paint = Paint()..color = color ..strokeWidth = 2;
-    TextPainter textPainter = TextPainter()..text = TextSpan(text: '$explain${max(size.width, size.height)}', style: TextStyle(color: color))
+    bool isHorizontal = axis == Axis.horizontal;
+    double width = isHorizontal ? size.width : size.height;
+    double height = isHorizontal ? size.height : size.width;
+
+    Paint paint = Paint()..color = color ..strokeWidth = strokeWidth;
+    TextPainter textPainter = TextPainter()..text = TextSpan(text: '$explain$width', style: TextStyle(color: color))
       ..textDirection = TextDirection.ltr;
     textPainter.layout();
     double textWidth = textPainter.width;
     double textHeight = textPainter.height;
 
-    if (isHorizontal) {
-      canvas.drawLine(Offset(4, 4), Offset(4, 20), paint);
-      canvas.drawLine(Offset(size.width - 4, 4), Offset(size.width - 4, 20), paint);
-      canvas.drawLine(Offset(6, 12), Offset(size.width / 2 - textWidth / 2 - 4, 12), paint);
-      canvas.drawLine(Offset(size.width / 2 + textWidth / 2 + 4, 12), Offset(size.width - 6, 12), paint);
-      textPainter.paint(canvas, Offset(size.width / 2 - textWidth / 2, 12 - textHeight / 2));
-    } else {
-      canvas.drawLine(Offset(4, 4), Offset(20, 4), paint);
-      canvas.drawLine(Offset(4, size.height - 4), Offset(20, size.height - 4), paint);
-      canvas.drawLine(Offset(12, 6), Offset(12, size.height / 2 - textWidth / 2 - 4), paint);
-      canvas.drawLine(Offset(12, size.height / 2 + textWidth / 2 + 4), Offset(12, size.height - 6), paint);
-      canvas.save();
-      canvas.translate(size.width / 2, size.height / 2);
+    bool includeText = width > textWidth + 2 * textMargin;
+    bool needDrawLine = width > textWidth + 2 * textMargin + 2 * lineMargin;
+
+    if (!isHorizontal) {
       canvas.rotate(pi / 2);
-      textPainter.paint(canvas, Offset(-textWidth / 2, -textHeight / 2));
-      canvas.restore();
+      canvas.translate(0, -height);
+    }
+    // draw divider
+    canvas.drawLine(Offset(0, 0), Offset(0, height), paint);
+    canvas.drawLine(Offset(width, 0), Offset(width, height), paint);
+    // draw text
+    if (includeText)
+      textPainter.paint(canvas, Offset(width / 2 - textWidth / 2, height / 2 - textHeight / 2));
+    else
+      textPainter.paint(canvas, Offset(width / 2 - textWidth / 2, height));
+    // draw line if there's space
+    if (needDrawLine) {
+      canvas.drawLine(Offset(lineMargin, height / 2), Offset(width / 2 - textWidth / 2 - textMargin, height / 2), paint);
+      canvas.drawLine(Offset(width / 2 + textWidth / 2 + textMargin, height / 2), Offset(width - lineMargin, height / 2), paint);
     }
   }
 
