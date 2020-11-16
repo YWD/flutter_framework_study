@@ -11,7 +11,8 @@ class ListViewScrollUpAnimate extends StatefulWidget {
   _ListViewScrollUpAnimateState createState() => _ListViewScrollUpAnimateState();
 }
 
-class _ListViewScrollUpAnimateState extends State<ListViewScrollUpAnimate> with SingleTickerProviderStateMixin {
+class _ListViewScrollUpAnimateState extends State<ListViewScrollUpAnimate>
+    with SingleTickerProviderStateMixin {
   static const double localScreenWidth = 240;
   static const double localScreenHeight = 280;
   static const double cacheHeight = 140;
@@ -20,7 +21,8 @@ class _ListViewScrollUpAnimateState extends State<ListViewScrollUpAnimate> with 
   static const double sizeIndicatorHeight = 16;
   static const double topMargin = 50;
   static const double cacheScreenTop = itemHeight + topMargin;
-  static const double cacheScreenBottom = localScreenHeight + 2 * cacheHeight + itemHeight + topMargin;
+  static const double cacheScreenBottom =
+      localScreenHeight + 2 * cacheHeight + itemHeight + topMargin;
   static const double listViewContentAnchor = cacheHeight + itemHeight + topMargin;
   double screenHeight = window.physicalSize.height / window.devicePixelRatio;
   double screenWidth = window.physicalSize.width / window.devicePixelRatio;
@@ -29,24 +31,40 @@ class _ListViewScrollUpAnimateState extends State<ListViewScrollUpAnimate> with 
   Color screenBackground = Colors.lightBlueAccent;
 
   int listItems = 0;
-  List<Color> itemColors = [Colors.red,Colors.orange, Colors.yellow, Colors.green, Colors.cyan, Colors.blue, Colors.purple];
+  List<Color> itemColors = [
+    Colors.red,
+    Colors.orange,
+    Colors.yellow,
+    Colors.green,
+    Colors.cyan,
+    Colors.blue,
+    Colors.purple
+  ];
 
   double globalDelta = 0;
+
   double get fakeScrollOffset => globalDelta;
+
   double get cacheOrigin => globalDelta.clamp(0, cacheHeight);
+
   double get scrollOffset => fakeScrollOffset - cacheOrigin;
+
   double get targetEndScrollOffset => fakeScrollOffset + localScreenHeight + cacheHeight;
+
   int get childCount => targetEndScrollOffset ~/ itemHeight + 1;
 
   // AnimationController animationController;
   // Animation<double> animation;
 
   bool forward = true;
+
   _startSimulateAnimate() {
     Timer.periodic(Duration(milliseconds: 10), (timer) {
       setState(() {
-        if (forward) globalDelta++;
-        else globalDelta--;
+        if (forward)
+          globalDelta++;
+        else
+          globalDelta--;
         if (globalDelta > 275) {
           globalDelta = 275;
           forward = false;
@@ -63,7 +81,6 @@ class _ListViewScrollUpAnimateState extends State<ListViewScrollUpAnimate> with 
 
   _simulateHandleChild() {
     if (scrollOffset > itemHeight && itemColors.first.value != Colors.transparent.value) {
-      // globalDelta -= itemHeight;
       Color firstColor = itemColors.removeAt(0);
       itemColors.insert(0, Colors.transparent);
       itemColors.add(firstColor);
@@ -101,7 +118,8 @@ class _ListViewScrollUpAnimateState extends State<ListViewScrollUpAnimate> with 
               ],
               alignment: Alignment.topCenter,
             ),
-            width: screenWidth, height: screenHeight,
+            width: screenWidth,
+            height: screenHeight,
           ),
           Padding(
             child: FloatingActionButton(
@@ -114,7 +132,7 @@ class _ListViewScrollUpAnimateState extends State<ListViewScrollUpAnimate> with 
           )
         ],
         alignment: Alignment.bottomRight,
-      )
+      ),
     );
   }
 
@@ -122,20 +140,19 @@ class _ListViewScrollUpAnimateState extends State<ListViewScrollUpAnimate> with 
     return Container(
       height: cacheScreenBottom,
       child: Row(
-        // mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
-        crossAxisAlignment: CrossAxisAlignment.end, // todo row height
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           SizeIndicator(
             length: fakeScrollOffset + localScreenHeight + cacheHeight,
             direction: Axis.vertical,
             explain: 'targetEndScrollOffset',
           ),
-          Container(width: sizeIndicatorHeight,),
+          Container(
+            width: sizeIndicatorHeight,
+          ),
           Column(
-            mainAxisSize: MainAxisSize.min,
             children: [
-              // Container(height: cacheHeight,),
               SizeIndicator(
                 length: fakeScrollOffset,
                 direction: Axis.vertical,
@@ -152,15 +169,36 @@ class _ListViewScrollUpAnimateState extends State<ListViewScrollUpAnimate> with 
                 explain: 'cache extent',
               ),
             ],
+            mainAxisSize: MainAxisSize.min,
           ),
-          Column(children: [
-            Container(height: cacheScreenTop,),
-            Container(width: localScreenWidth,height: cacheHeight, color: cacheAreaColor,),
-            Container(width: localScreenWidth,height: localScreenHeight, color: screenBackground,),
-            Container(width: localScreenWidth,height: cacheHeight, color: cacheAreaColor,),
-          ],),
-          Container(width: sizeIndicatorHeight,),
-          Container(width: sizeIndicatorHeight * 2,),
+          Column(
+            children: [
+              Container(
+                height: cacheScreenTop,
+              ),
+              Container(
+                width: localScreenWidth,
+                height: cacheHeight,
+                color: cacheAreaColor,
+              ),
+              Container(
+                width: localScreenWidth,
+                height: localScreenHeight,
+                color: screenBackground,
+              ),
+              Container(
+                width: localScreenWidth,
+                height: cacheHeight,
+                color: cacheAreaColor,
+              ),
+            ],
+          ),
+          Container(
+            width: sizeIndicatorHeight,
+          ),
+          Container(
+            width: sizeIndicatorHeight * 2,
+          ),
         ],
       ),
     );
@@ -174,6 +212,7 @@ class _ListViewScrollUpAnimateState extends State<ListViewScrollUpAnimate> with 
           setState(() {
             int delta = -details.delta.dy.toInt();
             if (delta > 0 && fakeScrollOffset > cacheHeight + itemHeight + topMargin / 2) return;
+
             if (globalDelta > 275) globalDelta = 275;
             globalDelta += delta;
             if (globalDelta < 0) globalDelta = 0;
@@ -189,7 +228,11 @@ class _ListViewScrollUpAnimateState extends State<ListViewScrollUpAnimate> with 
               mainAxisSize: MainAxisSize.min,
               children: _buildListItems(),
             ),
-            SizeIndicator(length: childCount * itemHeight, direction: Axis.vertical, color: Colors.blueGrey,),
+            SizeIndicator(
+              length: childCount * itemHeight,
+              direction: Axis.vertical,
+              color: Colors.blueGrey,
+            ),
           ],
         ),
       ),
@@ -197,27 +240,53 @@ class _ListViewScrollUpAnimateState extends State<ListViewScrollUpAnimate> with 
   }
 
   _buildTopSizeIndicatorLayer() {
-    return Container(height: cacheScreenTop + cacheHeight,child: Row(
-      mainAxisSize: MainAxisSize.min,
-      crossAxisAlignment: CrossAxisAlignment.end,
-      children: [
-        Container(width: sizeIndicatorHeight * 3,),
-        Container(width: localScreenWidth - sizeIndicatorHeight * 4,),
-        Column(mainAxisSize: MainAxisSize.min,children: [
-          SizeIndicator(length: scrollOffset, direction: Axis.vertical, explain: 'scroll offset', color: Colors.black,),
-          Container(width: sizeIndicatorHeight * 3, alignment: Alignment.bottomRight,child: SizeIndicator(length: cacheOrigin, direction: Axis.vertical, explain: 'cache origin', color: Colors.orangeAccent,)),
-        ],),
-      ],
-    ),);
+    return Container(
+      height: cacheScreenTop + cacheHeight,
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        crossAxisAlignment: CrossAxisAlignment.end,
+        children: [
+          Container(
+            width: sizeIndicatorHeight * 3,
+          ),
+          Container(
+            width: localScreenWidth - sizeIndicatorHeight * 4,
+          ),
+          Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizeIndicator(
+                length: scrollOffset,
+                direction: Axis.vertical,
+                explain: 'scroll offset',
+                color: Colors.black,
+              ),
+              Container(
+                width: sizeIndicatorHeight * 3,
+                alignment: Alignment.bottomRight,
+                child: SizeIndicator(
+                  length: cacheOrigin,
+                  direction: Axis.vertical,
+                  explain: 'cache origin',
+                  color: Colors.orangeAccent,
+                ),
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
   }
 
   _buildListItems() {
-    return childCount.toList().map((index) => Container(
-        width: itemWidth,
-        height: itemHeight,
-        color: itemColors[index % itemColors.length],
-      )
-    ).toList();
+    return childCount
+        .toList()
+        .map((index) => Container(
+              width: itemWidth,
+              height: itemHeight,
+              color: itemColors[index % itemColors.length],
+            ))
+        .toList();
   }
 }
 
