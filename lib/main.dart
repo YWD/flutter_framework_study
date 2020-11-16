@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import 'widgets_study/animate/tween.dart';
 import 'widgets_study/app_widget_tree.dart';
 import 'widgets_study/listview.dart';
 import 'widgets_study/listview_perform_layout/listview_analizy.dart';
@@ -8,8 +9,9 @@ import 'widgets_study/render/canvas_layer.dart';
 import 'widgets_study/single_child_scroll_view.dart';
 
 void main() {
-  // runApp(Center(child: SizeIndicator(length: 400, direction: Axis.vertical, explain: 'length',)));
+  // runApp(LinearTween());
   runApp(ListViewAnalyse());
+  // runApp(Center(child: SizeIndicator(length: 400, direction: Axis.vertical, explain: 'length',)));
   // runApp(SingleChildScrollV());
   // runApp(CanvasLayerDemo());
   // runApp(ListViewDemo());

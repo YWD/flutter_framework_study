@@ -28,11 +28,11 @@ class _ListViewDemoState extends State<ListViewDemo> {
     // print('window(${window.physicalSize.width / window.devicePixelRatio},${window.physicalSize.height / window.devicePixelRatio})');
 
     ctrl = ScrollController();
-    // ctrl.addListener(() {
+    ctrl.addListener(() {
     //   print('ctrl.position.maxScrollExtent:${ctrl.position.maxScrollExtent}');
     //   print('ctrl.position.minScrollExtent:${ctrl.position.minScrollExtent}');
-    //   print('controller offset:${ctrl.offset}');
-    // });
+      print('controller offset:${ctrl.position.pixels}');
+    });
   }
 
   @override
