@@ -38,39 +38,8 @@ class _ListViewScrollUpAnimateState extends State<ListViewScrollUpAnimate> with 
   double get targetEndScrollOffset => fakeScrollOffset + localScreenHeight + cacheHeight;
   int get childCount => targetEndScrollOffset ~/ itemHeight + 1;
 
-  AnimationController animationController;
-  Animation<double> animation;
-  @override
-  void initState() {
-    super.initState();
-
-    // todo web animate not work
-    // animationController = AnimationController(
-    //     duration: const Duration(seconds: 3), vsync: this);
-    // Animation<int> alpha = IntTween(begin: 0, end: 255).animate(animationController);
-    // alpha.addListener(() {
-    //   print('alpha:${alpha.value}');
-    // });
-
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return DirectionWidget(
-      child: Stack(alignment: Alignment.bottomRight,children: [
-        Container(width: screenWidth, height: screenHeight, child:  Stack(
-            alignment: Alignment.topCenter,
-            children: [
-              _buildScreenLayer(),
-              _buildListViewLayer(),
-              _buildTopSizeIndicatorLayer(),
-            ],
-          )),
-        Padding(padding: EdgeInsets.fromLTRB(0, 0, 32, 32), child: FloatingActionButton(onPressed: () {
-          _startSimulateAnimate();
-        }, child: Icon(Icons.play_circle_fill),),),
-    ],));
-  }
+  // AnimationController animationController;
+  // Animation<double> animation;
 
   bool forward = true;
   _startSimulateAnimate() {
@@ -103,6 +72,50 @@ class _ListViewScrollUpAnimateState extends State<ListViewScrollUpAnimate> with 
       Color lastColor = itemColors.removeLast();
       itemColors.insert(0, lastColor);
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+
+    // todo web animate not work
+    // animationController = AnimationController(
+    //     duration: const Duration(seconds: 3), vsync: this);
+    // Animation<int> alpha = IntTween(begin: 0, end: 255).animate(animationController);
+    // alpha.addListener(() {
+    //   print('alpha:${alpha.value}');
+    // });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return DirectionWidget(
+      child: Stack(
+        children: [
+          Container(
+            child: Stack(
+              children: [
+                _buildScreenLayer(),
+                _buildListViewLayer(),
+                _buildTopSizeIndicatorLayer(),
+              ],
+              alignment: Alignment.topCenter,
+            ),
+            width: screenWidth, height: screenHeight,
+          ),
+          Padding(
+            child: FloatingActionButton(
+              child: Icon(Icons.play_circle_fill),
+              onPressed: () {
+                _startSimulateAnimate();
+              },
+            ),
+            padding: EdgeInsets.fromLTRB(0, 0, 32, 32),
+          )
+        ],
+        alignment: Alignment.bottomRight,
+      )
+    );
   }
 
   _buildScreenLayer() {
@@ -199,12 +212,12 @@ class _ListViewScrollUpAnimateState extends State<ListViewScrollUpAnimate> with 
   }
 
   _buildListItems() {
-    return childCount.toList()
-        .map((index) => Container(
-          width: itemWidth,
-          height: itemHeight,
-          color: itemColors[index % itemColors.length],)
-        ).toList();
+    return childCount.toList().map((index) => Container(
+        width: itemWidth,
+        height: itemHeight,
+        color: itemColors[index % itemColors.length],
+      )
+    ).toList();
   }
 }
 
