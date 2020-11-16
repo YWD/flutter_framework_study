@@ -106,6 +106,14 @@ class _ListViewScrollUpAnimateState extends State<ListViewScrollUpAnimate>
 
   @override
   Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        body: _buildContent(),
+      ),
+    );
+  }
+
+  _buildContent() {
     return DirectionWidget(
       child: Stack(
         children: [
@@ -129,7 +137,7 @@ class _ListViewScrollUpAnimateState extends State<ListViewScrollUpAnimate>
               },
             ),
             padding: EdgeInsets.fromLTRB(0, 0, 32, 32),
-          )
+          ),
         ],
         alignment: Alignment.bottomRight,
       ),
@@ -144,61 +152,36 @@ class _ListViewScrollUpAnimateState extends State<ListViewScrollUpAnimate>
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           SizeIndicator(
-            length: fakeScrollOffset + localScreenHeight + cacheHeight,
-            direction: Axis.vertical,
-            explain: 'targetEndScrollOffset',
-          ),
+              length: fakeScrollOffset + localScreenHeight + cacheHeight,
+              direction: Axis.vertical,
+              explain: 'targetEndScrollOffset'),
           Container(
             width: sizeIndicatorHeight,
           ),
           Column(
             children: [
               SizeIndicator(
-                length: fakeScrollOffset,
-                direction: Axis.vertical,
-                explain: 'fake scroll offset',
-              ),
+                  length: fakeScrollOffset,
+                  direction: Axis.vertical,
+                  explain: 'fake scroll offset'),
               SizeIndicator(
-                length: localScreenHeight,
-                direction: Axis.vertical,
-                explain: 'screen height',
-              ),
-              SizeIndicator(
-                length: cacheHeight,
-                direction: Axis.vertical,
-                explain: 'cache extent',
-              ),
+                  length: localScreenHeight, direction: Axis.vertical, explain: 'screen height'),
+              SizeIndicator(length: cacheHeight, direction: Axis.vertical, explain: 'cache extent'),
             ],
             mainAxisSize: MainAxisSize.min,
           ),
           Column(
             children: [
-              Container(
-                height: cacheScreenTop,
+              Container(height: cacheScreenTop),
+              Container(width: localScreenWidth, height: cacheHeight, color: cacheAreaColor),
+              Container(width: localScreenWidth, height: localScreenHeight, color: screenBackground,
+                child: Container()
               ),
-              Container(
-                width: localScreenWidth,
-                height: cacheHeight,
-                color: cacheAreaColor,
-              ),
-              Container(
-                width: localScreenWidth,
-                height: localScreenHeight,
-                color: screenBackground,
-              ),
-              Container(
-                width: localScreenWidth,
-                height: cacheHeight,
-                color: cacheAreaColor,
-              ),
+              Container(width: localScreenWidth, height: cacheHeight, color: cacheAreaColor),
             ],
           ),
-          Container(
-            width: sizeIndicatorHeight,
-          ),
-          Container(
-            width: sizeIndicatorHeight * 2,
-          ),
+          Container(width: sizeIndicatorHeight),
+          Container(width: sizeIndicatorHeight * 2),
         ],
       ),
     );

@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_web/widgets_study/row.dart';
+import 'package:flutter_web/widgets_study/animate/animate_demo_e.dart';
+import 'package:flutter_web/widgets_study/animate/implict_anim.dart';
 
 void main() {
-  runApp(RowDemo());
+  runApp(ImplicitAnim());
+  // runApp(AnimateDemoE());
+  // runApp(AnimateTicker());
+  // runApp(RowDemo());
   // runApp(LinearTween());
   // runApp(ListViewAnalyse());
   // runApp(Center(child: SizeIndicator(length: 400, direction: Axis.vertical, explain: 'length',)));

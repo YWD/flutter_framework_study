@@ -68,17 +68,11 @@ class _ListViewDemoState extends State<ListViewDemo> {
   }
 }
 
-/// A widget that paints its area with a specified [Color] and then draws its
-/// child on top of that color.
 class MyColoredBox extends SingleChildRenderObjectWidget {
-  /// Creates a widget that paints its area with the specified [Color].
-  ///
-  /// The [color] parameter must not be null.
   const MyColoredBox({@required this.color, Widget child, Key key})
       : assert(color != null),
         super(key: key, child: child);
 
-  /// The color to paint the background area with.
   final Color color;
 
   @override
@@ -97,9 +91,6 @@ class _MyRenderColoredBox extends RenderProxyBoxWithHitTestBehavior {
       : _color = color,
         super(behavior: HitTestBehavior.opaque);
 
-  /// The fill color for this render object.
-  ///
-  /// This parameter must not be null.
   Color get color => _color;
   Color _color;
   set color(Color value) {
@@ -113,6 +104,7 @@ class _MyRenderColoredBox extends RenderProxyBoxWithHitTestBehavior {
 
   @override
   void paint(PaintingContext context, Offset offset) {
+    print('size:$size');
     if (size > Size.zero) {
       context.canvas.drawRect(offset & size, Paint()..color = color ..style = PaintingStyle.stroke ..strokeWidth = 2);
     }

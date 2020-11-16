@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web/my_widgets/direction_widget.dart';
+import 'package:flutter_web/widgets_study/listview.dart';
 
 class RowDemo extends StatelessWidget {
   @override
@@ -35,17 +36,51 @@ class RowDemo extends StatelessWidget {
               ),
             ),
             Expanded(
-                child: Center(
+              child: Center(
+                child: Container(
+                  width: 150,
+                  height: 150,
+                  color: Colors.yellow,
                   child: Container(
+                    width: 300,
+                    height: 300,
+                    color: Colors.red,
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              height: 200,
+              width: 150,
+              child: CustomPaint(
+                painter: MyPainter(),
+              ),
+            ),
+            Container(
               width: 150,
               height: 150,
-              color: Colors.yellow,
-              child: Container(width: 300, height: 300, color: Colors.red,),
-            ),
-                )),
+              child: Container(
+                width: 300,
+                height: 300,
+                child: MyColoredBox(
+                  color: Colors.cyan,
+                ),
+              ),
+            )
           ],
         ),
       ),
     );
   }
+}
+
+class MyPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    // print('size:$size');
+    canvas.drawLine(Offset.zero, Offset(0, -100), Paint()..color = Colors.red);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
