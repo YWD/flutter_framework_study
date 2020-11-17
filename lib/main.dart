@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_web/widgets_study/animate/animate_demo_e.dart';
 import 'package:flutter_web/widgets_study/animate/implict_anim.dart';
 
+import 'widgets_study/animate/explicit_anim.dart';
+
 void main() {
-  runApp(ImplicitAnim());
+  runApp(ExplicitAnim());
+  // runApp(ImplicitAnim());
   // runApp(AnimateDemoE());
   // runApp(AnimateTicker());
   // runApp(RowDemo());
