@@ -1,8 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_web/platform_channel/method_channel.dart';
 import 'package:flutter_web/widgets_study/animate/animate_demo_e.dart';
 import 'package:flutter_web/widgets_study/animate/implict_anim.dart';
+import 'package:flutter_web/widgets_study/row.dart';
 
 import 'widgets_study/animate/explicit_anim.dart';
+
+@pragma('vm:entry-point')
+void entry() {
+  runApp(MethodChannelDemo());
+}
+
+@pragma('vm:entry-point')
+void init() {
+  runApp(Container(color: Colors.purple,));
+}
 
 void main() {
   runApp(ExplicitAnim());
