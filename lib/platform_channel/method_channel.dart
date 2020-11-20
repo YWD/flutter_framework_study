@@ -26,8 +26,11 @@ class _MethodChannelDemoState extends State<MethodChannelDemo> {
           return call.noSuchMethod(null);
       }
     });
-
-    platformEvent.receiveBroadcastStream().listen((event) {
+    
+    print('before receive');
+    var stream = platformEvent.receiveBroadcastStream();
+    print('before listen');
+    stream.listen((event) {
       print('dart listen: $event');
     });
   }
