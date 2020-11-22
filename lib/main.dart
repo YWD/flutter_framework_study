@@ -3,12 +3,14 @@ import 'package:flutter_web/platform_channel/method_channel.dart';
 import 'package:flutter_web/widgets_study/animate/animate_demo_e.dart';
 import 'package:flutter_web/widgets_study/animate/implict_anim.dart';
 import 'package:flutter_web/widgets_study/row.dart';
+import 'package:flutter_web/widgets_study/will_pop_up.dart';
 
 import 'widgets_study/animate/explicit_anim.dart';
 
 @pragma('vm:entry-point')
 void entry() {
-  runApp(MethodChannelDemo());
+  runApp(PopDemo());
+  // runApp(MethodChannelDemo());
 }
 
 @pragma('vm:entry-point')
@@ -17,7 +19,8 @@ void init() {
 }
 
 void main() {
-  runApp(ExplicitAnim());
+  runApp(PopDemo());
+  // runApp(ExplicitAnim());
   // runApp(ImplicitAnim());
   // runApp(AnimateDemoE());
   // runApp(AnimateTicker());
