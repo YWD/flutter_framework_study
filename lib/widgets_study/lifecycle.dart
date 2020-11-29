@@ -14,19 +14,22 @@ class _WidgetLifecycleState extends State<WidgetLifecycle> {
   bool firstNotThird = false;
   GlobalKey key = GlobalKey(debugLabel: 'lifecycle');
 
+  // stateful widget -> stateful element -> state --> initState
   @override
-  void initState() {  // stateful widget -> stateful element -> state --> initState
+  void initState() {
     super.initState();
   }
 
+  // after initState / InheritedWidget -> InheritedElement --> updated
   @override
-  void didChangeDependencies() {  // after initState / InheritedWidget -> InheritedElement --> updated
+  void didChangeDependencies() {
     Theme.of(context);
     super.didChangeDependencies();
   }
 
+  // parent widget rebuild, if this widget can 'update' will reuse this widgetf
   @override
-  void didUpdateWidget(covariant WidgetLifecycle oldWidget) { // parent widget rebuild, if this widget can 'update' will reuse this widget
+  void didUpdateWidget(covariant WidgetLifecycle oldWidget) {
     super.didUpdateWidget(oldWidget);
     print('didUpdateWidget');
   }
@@ -37,13 +40,15 @@ class _WidgetLifecycleState extends State<WidgetLifecycle> {
     print('reassemble');
   }
 
+  // called when the widget is removed from the widget tree
   @override
-  void deactivate() {   // called when the widget is removed from the widget tree
+  void deactivate() {
     super.deactivate();
   }
 
+  // after drawFrame finalizeTree -> unMountAll -> forEach dispose
   @override
-  void dispose() {    // after drawFrame finalizeTree -> unMountAll -> forEach dispose
+  void dispose() {
     super.dispose();
   }
 
