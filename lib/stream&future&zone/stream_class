@@ -1,0 +1,33 @@
+StreamController<T> implements StreamSink<T>
+_AsyncStreamController =
+_StreamController<T> with _AsyncStreamControllerDispatch<T> {
+    onListen:(){}
+
+    add()
+    _add()
+}
+
+_StreamSinkWrapper<T> implements StreamSink<T> {
+    add()
+}
+
+_StreamImplEvents extends _PendingEvents<T> {
+    firstPendingEvent = lastPendingEvent
+}
+
+_DelayedData<T> extends _DelayedEvent<T> {
+  final T value;
+  _DelayedData(this.value);
+  void perform(_EventDispatch<T> dispatch) {
+    dispatch._sendData(value);
+  }
+}
+
+_ControllerStream<T> extends _StreamImpl<T> {
+
+}
+
+_ControllerSubscription<T> extends _BufferingStreamSubscription<T> {
+
+}
+
